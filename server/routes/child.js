@@ -5,7 +5,7 @@ const Child = require('./../models/child');
 const router = new Router();
 const routeGuard = require('./../middleware/route-guard');
 
-router.post('/create', (req, res, next) => {
+router.post('/create', routeGuard, (req, res, next) => {
   const { name, address, emergencyContactNumber } = req.body;
   Child.create({
     name,
@@ -19,7 +19,7 @@ router.post('/create', (req, res, next) => {
     });
 });
 
-router.get('/list', (req, res, next) => {
+router.get('/list', routeGuard, (req, res, next) => {
   Child.find()
     .then((allChildren) => res.json(allChildren))
     .catch((error) => {
@@ -27,7 +27,7 @@ router.get('/list', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Child.findById(id)
     .then((child) => {
@@ -38,7 +38,7 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.patch('/:id', (req, res, next) => {
+router.patch('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
   const { name, address, emergencyContactNumber } = req.body;
   Child.findByIdAndUpdate(id, { name, address, emergencyContactNumber })
@@ -50,7 +50,7 @@ router.patch('/:id', (req, res, next) => {
     });
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Child.findByIdAndRemove(id)
     .then(() => {
