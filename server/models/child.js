@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     trim: true
   },
 
@@ -18,20 +19,13 @@ const schema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  class: {
-    type: String,
-    required: true,
-    trim: true
-  },
   parent: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'User'
   },
   teacher: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'User'
   }
 });
 
