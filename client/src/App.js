@@ -104,8 +104,7 @@ class App extends Component {
             exact
           />
           <PrivateRoute
-            path="/child/profile"
-            redirect="/sign-up"
+            path="/child/id:"
             authorized={
               !this.state.active ||
               (this.state.user && this.state.user.role === 'teacher')
