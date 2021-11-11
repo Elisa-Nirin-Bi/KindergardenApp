@@ -10,6 +10,13 @@ export const signUp = (body) => {
     return response.data.user;
   });
 };
+
+export const updateTeacher = (body) => {
+  return url.post('/authentication/sign-up', body).then((response) => {
+    return response.data.user;
+  });
+};
+
 export const parentSignUp = (body) => {
   return url.post('/authentication/parent/sign-up', body).then((response) => {
     return response.data.user;
