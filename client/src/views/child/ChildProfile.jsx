@@ -4,7 +4,7 @@ class ChildProfile extends Component {
   render() {
     return (
       <div>
-        <h2>Child</h2>
+        <h2>Child There</h2>
       </div>
     );
   }

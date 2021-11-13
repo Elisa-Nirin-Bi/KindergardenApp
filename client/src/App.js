@@ -3,7 +3,8 @@ import { Route, Switch, Link } from 'react-router-dom';
 import { Component } from 'react';
 import TeacherSignUp from './TeacherSignUp';
 import ParentSignUp from './ParentSignUp';
-import ChildProfile from './ChildProfile';
+import ChildProfile from './views/child/ChildProfile';
+import ChildCreate from './views/child/ChildCreate';
 import SignInPage from './SignInPage';
 import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
@@ -138,10 +139,18 @@ class App extends Component {
             exact
           />
           <PrivateRoute
+            path="/child/create"
+            authorized={
+              !this.state.active ||
+              (this.state.user && this.state.user.role === 'parent')
+            }
+            component={ChildCreate}
+          />
+          <PrivateRoute
             path="/child/:id"
             authorized={
               !this.state.active ||
-              (this.state.user && this.state.user.role === 'teacher')
+              (this.state.user && this.state.user.role === 'parent')
             }
             component={ChildProfile}
           />

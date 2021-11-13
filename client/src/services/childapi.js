@@ -7,6 +7,7 @@ const url = axios.create({
 
 // to create child
 export const createChild = (data) => {
+  console.log('reached the clildapi');
   return url
     .post('/child/create', data)
     .then((response) => response.data.course);
