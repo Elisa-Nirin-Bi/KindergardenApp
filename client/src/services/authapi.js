@@ -54,6 +54,7 @@ export const parentSignUp = (body) => {
     return response.data.user;
   });
 };
+
 export const signIn = (body) =>
   url
     .post('/authentication/sign-in', body)

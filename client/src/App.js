@@ -5,6 +5,7 @@ import TeacherSignUp from './TeacherSignUp';
 import ParentSignUp from './ParentSignUp';
 import ChildProfile from './views/child/ChildProfile';
 import ChildCreate from './views/child/ChildCreate';
+import ChildList from './views/child/ChildList';
 import SignInPage from './SignInPage';
 import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
@@ -147,11 +148,16 @@ class App extends Component {
             component={ChildCreate}
           />
           <PrivateRoute
-            path="/child/:id"
+            path="/child/list"
             authorized={
               !this.state.active ||
-              (this.state.user && this.state.user.role === 'parent')
+              (this.state.user && this.state.user.role === 'teacher')
             }
+            component={ChildList}
+          />
+          <PrivateRoute
+            path="/child/:id"
+            authorized={!this.state.active || this.state.user}
             component={ChildProfile}
           />
         </Switch>
