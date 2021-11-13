@@ -96,8 +96,12 @@ router.post('/parent/sign-up', (req, res, next) => {
 router.post('/sign-in', (req, res, next) => {
   let user;
   const { email, password } = req.body;
+  console.log('email in the server');
+  console.log(email);
+  console.log('password in the server');
+  console.log(password);
   User.findOne({ email })
-    .populate('child')
+    // .populate('child')
     .then((document) => {
       if (!document) {
         return Promise.reject(new Error("There's no user with that email."));
