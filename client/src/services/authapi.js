@@ -12,9 +12,22 @@ export const signUp = (body) => {
 };
 
 export const updateTeacher = (body) => {
-  return url.post('/authentication/sign-up', body).then((response) => {
-    return response.data.user;
-  });
+  const { name, email, password } = body;
+  const { idUser } = body;
+  console.log('idUser');
+  console.log(idUser);
+  console.log('name');
+  console.log(name);
+  console.log('email');
+  console.log(email);
+  console.log('password');
+  console.log(password);
+  const bodynew = { name, email, password };
+  return url
+    .patch(`/authentication/${idUser}/edit`, bodynew)
+    .then((response) => {
+      return response.data.user;
+    });
 };
 
 export const parentSignUp = (body) => {
