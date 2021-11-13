@@ -1,55 +1,91 @@
-Models:
+Models
+User
+name - String
+email - String
+passwordHashAndSalt - String
+role - String, either 'parent' or 'teacher'
 
-- User ++ consent
-- Child expiration
-- Payment
-- News (for photo upload and news feed)
-- Image
+Child
+name- String
+address - String
+emergencyContactNumber - String
+parent - ObjectId, refers to user document
 
-Routes:
+Post
+message - String not required
+image - not not required
+timestamp
 
-- Authentication - done
-- Child x all crud operations:
-- Create
-  - child/create
-- Read
-  - child/:id
-    -child/list
-- Update
-  -child/:id/edit
-- Delete
-  -child/:id/delete
-- Images upload routes
-- Messages routes x all crud operations
-- Payments
+AUTHENTICATION Routes
 
-React Components:
+POST "/authentication/sign-up" Sign Up.
+POST "/authentication/sign-in" Sign In.
+PATCH ""/authentication/:id" Edit User Info
+DELETE "/authentication/sign-out" Sign Out.
 
-- login - done
-  Parent:
+CHILD Routes
 
-Teacher:
+GET "/child/list" List kids
+POST "/child/create" create kid
+GET "/child/:id" find child
+PATCH "/child/:id" edit child
+DELETE "/child/:id" delete
 
-- main dashboard:
+Notification Routes
 
-  - notifications
-  - list child of her class
+POST "/notification/create" to create notification
+PATCH "/notification/:id" Edit notification
+Delete "/notification/:id" Delete notification
+GET "/notification/:id" Read notification
 
-  - child profile:
-    - chat
-    - form to update child
-    - upload images, video, files
-    - send news input
+ENDPOINTS
 
-Parent:
+CHILD
+createChild => CREATE CHILD
+editChild => EDIT CHILD
+getAllChildreN => CHILDREN LIST
+getChild => FIND CHILD PROFILE
+removeChild => DELETE CHILD PROFILE
 
-- child profile with different options (what if more than 1 kid?):
-- form to create child
-  - view images, video, news
-  - download files, sign them and resend
-  - they can approve requests
-  - do payments (will all teachers see it?)
-  - calendar
-  - view weekly menu
+NOTIFICATION
 
-Cron Job for Payment
+createNotification => CREATE NOTIFICATION
+editNotification => EDIT NOTIFICATION
+getAllNotification => CHILDREN NOTIFICATION
+getNotification => FIND NOTIFICATION
+removeNotification => DELETE NOTIFICATION
+
+Client-side
+Views
+PARENT
+If the user is a parent, he sees a dashboard where he can access a form to create/edit child profile.
+When he opens his child profile, he sees the teacher's notifications
+Child name/address/contact number/parent name
+DASHBOARD
+EDIT CHILD FORM VIEW
+CREATE CHILD FORM VIEW
+CHILD PROFILE VIEW
+PARENT PROFILE EDIT FORM VIEW
+
+TEACHER
+
+The teacher will see his dashboard where there a search input to search a child
+
+Within the child profile, he will have a form to create/edit notifications
+The teacher has a form to modify his own profile
+The teacher will also have the notifications in each kid profile
+The teacher can see all the kids list
+
+DASHBOARD
+EDIT NOTIFICATION FORM VIEW
+CREATE NOTIFICATION FORM VIEW
+CHILD NOTIFICATION VIEW
+TEACHER PROFILE EDIT FORM VIEW
+
+Wishlist:
+
+1. Comments to teachers notifications
+   2)Chat
+   2)Subscriptions
+   3)Kid Image Profile
+   3)Drivers

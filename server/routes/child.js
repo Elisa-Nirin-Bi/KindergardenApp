@@ -5,6 +5,8 @@ const Child = require('./../models/child');
 const router = new Router();
 const routeGuard = require('./../middleware/route-guard');
 
+// to create child profile
+
 router.post('/create', routeGuard, (req, res, next) => {
   const { name, address, emergencyContactNumber } = req.body;
   Child.create({
@@ -19,6 +21,8 @@ router.post('/create', routeGuard, (req, res, next) => {
     });
 });
 
+// to find all children profiles
+
 router.get('/list', routeGuard, (req, res, next) => {
   Child.find()
     .then((allChildren) => res.json(allChildren))
@@ -27,9 +31,12 @@ router.get('/list', routeGuard, (req, res, next) => {
     });
 });
 
+// to find one child profile
+
 router.get('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Child.findById(id)
+    .populate('parent')
     .then((child) => {
       res.json({ child });
     })
@@ -37,6 +44,8 @@ router.get('/:id', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+// to update a child profile
 
 router.patch('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;
@@ -49,6 +58,8 @@ router.patch('/:id', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+// to delete a child profile
 
 router.delete('/:id', routeGuard, (req, res, next) => {
   const { id } = req.params;

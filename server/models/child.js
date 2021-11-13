@@ -22,10 +22,6 @@ const schema = new mongoose.Schema({
   parent: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  },
-  teacher: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
   }
 });
 
