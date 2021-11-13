@@ -1,4 +1,5 @@
 import React from 'react';
+import ChildList from './child/ChildList';
 
 const TeacherDashboard = (props) => {
   console.log('props4');
@@ -12,6 +13,9 @@ const TeacherDashboard = (props) => {
       <button>
         <a href={'/' + props.user._id + '/edit'}>Edit Profile</a>
       </button>
+      <div>
+        <ChildList></ChildList>
+      </div>
     </div>
   );
 };

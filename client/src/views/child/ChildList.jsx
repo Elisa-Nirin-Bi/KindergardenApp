@@ -14,9 +14,14 @@ class ChildList extends Component {
       .then((response) => {
         console.log('response');
         console.log(response);
-        this.setState((response) => {
-          return { childs: [response.data] };
+        let valuesloaded = response;
+        console.log('valuesloaded');
+        console.log(valuesloaded);
+        this.setState(() => {
+          return { childs: [...valuesloaded] };
         });
+        console.log('this.state from ChildList');
+        console.log(this.state);
       })
       .catch((error) => {
         console.log(error);
@@ -33,13 +38,17 @@ class ChildList extends Component {
   //   alert('There was an error editing');
   // });
 
-  render() {
+  componentDidMount() {
     this.loadChildren();
-    console.log('this.state from ChildList');
-    console.log(this.state);
+  }
+
+  render() {
     return (
       <div>
         <h2>Child List</h2>
+        {this.state.childs.map((child) => {
+          return <div>{child.name}</div>;
+        })}
       </div>
     );
   }
