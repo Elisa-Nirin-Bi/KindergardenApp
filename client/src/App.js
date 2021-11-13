@@ -3,8 +3,13 @@ import { Route, Switch, Link } from 'react-router-dom';
 import { Component } from 'react';
 import TeacherSignUp from './TeacherSignUp';
 import ParentSignUp from './ParentSignUp';
-import ChildProfile from './ChildProfile';
+import ChildProfile from './views/child/ChildProfile';
+import ChildCreate from './views/child/ChildCreate';
 import SignInPage from './SignInPage';
+import TeacherUpdate from './TeacherEdit';
+import ParentUpdate from './ParentUpdate';
+import TeacherDashboard from './views/TeacherDashboard';
+import ParentDashboard from './views/ParentDashboard';
 import HomeIcon from '@mui/icons-material/Home';
 
 import HomePage from './HomePage';
@@ -45,6 +50,8 @@ class App extends Component {
     });
   };
   render() {
+    console.log('this.state.user');
+    console.log(this.state.user);
     return (
       <div className="App">
         <nav>
@@ -52,12 +59,22 @@ class App extends Component {
             <HomeIcon style={{ fontSize: '48px' }} />
           </Link>
         </nav>
-        {(this.state.user && (
-          <>
-            <span>Welcome {this.state.user.name}</span>
-            <button onClick={this.handleSignOut}>Sign Out</button>
-          </>
-        )) || (
+        {(this.state.user &&
+          ((this.state.user.role === 'teacher' && (
+            <>
+              <TeacherDashboard
+                user={this.state.user}
+                onClick={this.handleSignOut}
+              />
+            </>
+          )) || (
+            <>
+              <ParentDashboard
+                user={this.state.user}
+                onClick={this.handleSignOut}
+              />
+            </>
+          ))) || (
           <>
             <div className="div-access">
               <Link to="/sign-up">Teacher</Link>
@@ -71,6 +88,24 @@ class App extends Component {
             path="/sign-up"
             render={(props) => (
               <TeacherSignUp
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+              />
+            )}
+          />
+          <Route
+            path="/:id/edit"
+            render={(props) => (
+              <TeacherUpdate
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+              />
+            )}
+          />
+          <Route
+            path="/parent/:id/edit"
+            render={(props) => (
+              <ParentUpdate
                 {...props}
                 onAuthenticationChange={this.handleAuthenticationChange}
               />
@@ -104,11 +139,18 @@ class App extends Component {
             exact
           />
           <PrivateRoute
-            path="/child/profile"
-            redirect="/sign-up"
+            path="/child/create"
             authorized={
               !this.state.active ||
-              (this.state.user && this.state.user.role === 'teacher')
+              (this.state.user && this.state.user.role === 'parent')
+            }
+            component={ChildCreate}
+          />
+          <PrivateRoute
+            path="/child/:id"
+            authorized={
+              !this.state.active ||
+              (this.state.user && this.state.user.role === 'parent')
             }
             component={ChildProfile}
           />

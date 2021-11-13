@@ -27,6 +27,51 @@ router.post('/sign-up', (req, res, next) => {
       next(error);
     });
 });
+
+router.patch('/:id/edit', (req, res, next) => {
+  const { id } = req.params;
+  const { name, email, password } = req.body;
+  bcryptjs
+    .hash(password, 10)
+    .then((hash) => {
+      return User.findByIdAndUpdate(id, {
+        name,
+        email,
+        passwordHashAndSalt: hash,
+        role: 'teacher'
+      });
+    })
+    .then((user) => {
+      req.session.userId = user._id;
+      res.json({ user });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.patch('/parent/:id/edit', (req, res, next) => {
+  const { id } = req.params;
+  const { name, email, password } = req.body;
+  bcryptjs
+    .hash(password, 10)
+    .then((hash) => {
+      return User.findByIdAndUpdate(id, {
+        name,
+        email,
+        passwordHashAndSalt: hash,
+        role: 'parent'
+      });
+    })
+    .then((user) => {
+      req.session.userId = user._id;
+      res.json({ user });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 router.post('/parent/sign-up', (req, res, next) => {
   const { name, email, password, role } = req.body;
   bcryptjs
