@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllChildren } from '../../services/childapi';
+import { removeChild } from '../../services/childapi';
 
 class ChildList extends Component {
   constructor() {
@@ -12,31 +13,29 @@ class ChildList extends Component {
   loadChildren = () => {
     getAllChildren()
       .then((response) => {
-        console.log('response');
-        console.log(response);
         let valuesloaded = response;
-        console.log('valuesloaded');
-        console.log(valuesloaded);
         this.setState(() => {
           return { childs: [...valuesloaded] };
         });
-        console.log('this.state from ChildList');
-        console.log(this.state);
       })
       .catch((error) => {
         console.log(error);
         alert('There was an error loading children list.');
       });
   };
-  // updateParent({ name, email, password, idUser })
-  // .then((user) => {
-  //   this.props.onAuthenticationChange(user);
-  //   this.props.history.push('/');
-  // })
-  // .catch((error) => {
-  //   console.log(error);
-  //   alert('There was an error editing');
-  // });
+
+  removeSelectedChild = (event, childId) => {
+    event.preventDefault();
+    const idChildToRemove = childId;
+    removeChild(idChildToRemove)
+      .then(() => {
+        window.location.reload(false);
+      })
+      .catch((error) => {
+        alert('there was an error deleting the child profile.');
+        console.log(error);
+      });
+  };
 
   componentDidMount() {
     this.loadChildren();
@@ -57,6 +56,11 @@ class ChildList extends Component {
                 <a href={'/child/' + child._id + '/edit/'}>
                   Edit Child Profile
                 </a>
+              </button>
+              <button
+                onClick={(event) => this.removeSelectedChild(event, child._id)}
+              >
+                Remove Child
               </button>
             </div>
           );
