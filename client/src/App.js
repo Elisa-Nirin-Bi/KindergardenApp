@@ -4,6 +4,7 @@ import { Component } from 'react';
 import TeacherSignUp from './TeacherSignUp';
 import ParentSignUp from './ParentSignUp';
 import ChildProfile from './views/child/ChildProfile';
+import ChildEdit from './views/child/ChildEdit';
 import ChildCreate from './views/child/ChildCreate';
 import ChildList from './views/child/ChildList';
 import SignInPage from './SignInPage';
@@ -132,11 +133,12 @@ class App extends Component {
           />
           <Route
             path="/"
-            element={
-              <HomePage
-                onAuthenticationChange={this.props.handleAuthenticationChange}
-              />
+            component={
+              this.state.user && this.state.user.role === 'teacher'
+                ? ChildList
+                : HomePage
             }
+            onAuthenticationChange={this.handleAuthenticationChange}
             exact
           />
           <PrivateRoute
@@ -146,6 +148,7 @@ class App extends Component {
               (this.state.user && this.state.user.role === 'parent')
             }
             component={ChildCreate}
+            exact
           />
           <PrivateRoute
             path="/child/list"
@@ -154,6 +157,12 @@ class App extends Component {
               (this.state.user && this.state.user.role === 'teacher')
             }
             component={ChildList}
+            exact
+          />
+          <PrivateRoute
+            path="/child/:id/edit"
+            authorized={!this.state.active || this.state.user}
+            component={ChildEdit}
           />
           <PrivateRoute
             path="/child/:id"

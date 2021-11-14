@@ -47,7 +47,19 @@ class ChildList extends Component {
       <div>
         <h2>Child List</h2>
         {this.state.childs.map((child) => {
-          return <div>{child.name}</div>;
+          return (
+            <div key={child._id}>
+              {child.name}
+              <button>
+                <a href={'/child/' + child._id}>View Profile</a>
+              </button>
+              <button>
+                <a href={'/child/' + child._id + '/edit/'}>
+                  Edit Child Profile
+                </a>
+              </button>
+            </div>
+          );
         })}
       </div>
     );

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { createChild } from '../../services/childapi';
+import { editChild } from '../../services/childapi';
+import { getChild } from '../../services/childapi';
 
-class ChildCreate extends Component {
+class ChildEdit extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,18 +24,43 @@ class ChildCreate extends Component {
     console.log('this.state');
     console.log(this.state);
     const { name, address, emergencyContactNumber } = this.state;
-    createChild({ name, address, emergencyContactNumber })
-      .then((user) => {
+    editChild(this.props.match.params.id, {
+      name,
+      address,
+      emergencyContactNumber
+    })
+      .then(() => {
         this.props.history.push('/');
       })
 
       .catch((error) => {
         console.log(error);
-        alert('There was an error creating the Child Profile');
+        alert('There was an error editing the Child Profile');
       });
   };
 
+  componentDidMount() {
+    getChild(this.props.match.params.id)
+      .then((childinfo) => {
+        const infoChildLoaded = childinfo.child;
+        console.log('infoChildLoaded');
+        console.log(infoChildLoaded);
+        this.setState(() => {
+          return {
+            name: infoChildLoaded.name,
+            address: infoChildLoaded.address,
+            emergencyContactNumber: infoChildLoaded.emergencyContactNumber
+          };
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
+    console.log('this.props');
+    console.log(this.props);
     return (
       <div>
         <h2>Child Here</h2>
@@ -69,7 +95,7 @@ class ChildCreate extends Component {
               value={this.state.emergencyContactNumber}
               onChange={this.handleInputChange}
             />
-            <button>Create Child Profile</button>
+            <button>Edit Child Profile</button>
           </form>
         </div>
       </div>
@@ -77,4 +103,4 @@ class ChildCreate extends Component {
   }
 }
 
-export default ChildCreate;
+export default ChildEdit;
