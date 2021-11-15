@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { createChild } from '../../services/childapi';
 
 class ChildCreate extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       address: '',
-      emergencyContactNumber: ''
+      emergencyContactNumber: '',
+      parent: ''
     };
   }
 
@@ -22,22 +23,49 @@ class ChildCreate extends Component {
     event.preventDefault();
     console.log('this.state');
     console.log(this.state);
-    const { name, address, emergencyContactNumber } = this.state;
-    createChild({ name, address, emergencyContactNumber })
+    console.log('this.props in handleFormSubmission');
+    console.log(this.props);
+    const { name, address, emergencyContactNumber, parent } = this.state;
+    createChild({ name, address, emergencyContactNumber, parent })
       .then((user) => {
         this.props.history.push('/');
       })
-
       .catch((error) => {
         console.log(error);
         alert('There was an error creating the Child Profile');
       });
   };
 
+  componentDidMount() {
+    console.log('this.props insidedidmount');
+    console.log(this.props);
+  }
+
+  componentDidUpdate() {
+    console.log('this.props insidedidmountUpdate');
+    console.log(this.props);
+    let parent = this.props.user;
+    console.log('parentUpdate');
+    console.log(parent);
+    if (parent !== this.state.parent) {
+      this.setState({ parent });
+    }
+    console.log('this.state.parentUpdate');
+    console.log(this.state.parent);
+  }
+
   render() {
+    console.log('this.user');
+    console.log(this.user);
+    console.log('this.props');
+    console.log(this.props);
+    console.log('this.state.parent');
+    console.log(this.state.parent);
+    console.log('this.state');
+    console.log(this.state);
     return (
       <div>
-        <h2>Child Here</h2>
+        <h2>Child Here we know</h2>
         <div className="teacherSignUp-div">
           <form onSubmit={this.handleFormSubmission}>
             <label htmlFor="input-name">Name</label>

@@ -11,6 +11,7 @@ const fileUploader = require('./../middleware/file-upload');
 // to create child profile
 
 router.post('/create', routeGuard, (req, res, next) => {
+  console.log('we got the route of the createChild');
   const { name, address, emergencyContactNumber, parent } = req.body;
   Child.create({
     name,
@@ -19,7 +20,7 @@ router.post('/create', routeGuard, (req, res, next) => {
     parent
   })
     .then((kid) => {
-      return User.findByIdAndUpdate(parent, { $push: { child: kid._id } });
+      return User.findByIdAndUpdate(parent._id, { $push: { child: kid._id } });
     })
     .then((response) => res.json(response))
     .catch((error) => {
