@@ -7,6 +7,8 @@ import ChildProfile from './views/child/ChildProfile';
 import ChildEdit from './views/child/ChildEdit';
 import ChildCreate from './views/child/ChildCreate';
 import ChildList from './views/child/ChildList';
+import ChildNotification from './views/child/ChildNotification';
+import CreateNotification from './views/notification/CreateNotification';
 import SignInPage from './SignInPage';
 import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
@@ -141,8 +143,26 @@ class App extends Component {
             onAuthenticationChange={this.handleAuthenticationChange}
             exact
           />
+          <Route
+            path="/child/:id/upload"
+            render={(props) => (
+              <CreateNotification
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+              />
+            )}
+          />
+          <Route
+            path="/child/:id/create-notification"
+            render={(props) => (
+              <CreateNotification
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+              />
+            )}
+          />
           <PrivateRoute
-            path="/child/create"
+            path="/child/:parentId/create"
             authorized={
               !this.state.active ||
               (this.state.user && this.state.user.role === 'parent')

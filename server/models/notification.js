@@ -7,6 +7,14 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true
+  },
+  imageUrl: {
+    type: String
+  },
+  childProfile: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Child'
   }
 });
 

@@ -69,6 +69,7 @@ class ChildCreate extends Component {
               value={this.state.emergencyContactNumber}
               onChange={this.handleInputChange}
             />
+
             <button>Create Child Profile</button>
           </form>
         </div>

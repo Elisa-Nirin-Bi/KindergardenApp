@@ -3,16 +3,20 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const Child = require('./../models/child');
 const router = new Router();
-const routeGuard = require('./../middleware/route-guard');
+const routeGuard = require('../middleware/route-guard');
+const Notification = require('../models/notification');
+const fileUploader = require('./../middleware/file-upload');
 
 // to create child profile
 
-router.post('/create', routeGuard, (req, res, next) => {
+router.post('/:parentId/create', routeGuard, (req, res, next) => {
+  const parentId = req.params;
   const { name, address, emergencyContactNumber } = req.body;
   Child.create({
     name,
     address,
-    emergencyContactNumber
+    emergencyContactNumber,
+    parent: parentId
   })
 
     .then((response) => res.json(response))
@@ -70,6 +74,36 @@ router.delete('/:id', routeGuard, (req, res, next) => {
     .catch((error) => {
       next(error);
     });
+});
+
+router.get('/:id/notification', (req, res, next) => {
+  Notification.find()
+    .populate('child')
+    .then((notification) => res.status(200).json(notification))
+    .catch((err) => next(err));
+});
+
+router.post(
+  '/:id/upload',
+  fileUploader.single('imageUrl'),
+  (req, res, next) => {
+    console.log(req.file);
+
+    if (!req.file) {
+      next(new Error('No file uploaded!'));
+      return;
+    }
+
+    res.json({ secure_url: req.file.path });
+  }
+);
+
+router.post('/:id/create-notification', (req, res, next) => {
+  Notification.create(req.body)
+    .then((newNotification) => {
+      res.status(200).json(newNotification);
+    })
+    .catch((err) => next(err));
 });
 
 module.exports = router;

@@ -28,6 +28,8 @@ class ChildProfile extends Component {
         <h2>Name: {this.state.child.name}</h2>
         <h3>Address: {this.state.child.address}</h3>
         <h3>Emergency Telephone: {this.state.child.emergencyContactNumber}</h3>
+        <h3>Parent: {this.state.child.parent}</h3>
+        <a href={`/child/${this.state.child._id}/upload`}>Create </a>
       </div>
     ) : (
       <div></div>

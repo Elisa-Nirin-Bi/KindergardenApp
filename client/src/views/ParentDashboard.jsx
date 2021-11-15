@@ -5,6 +5,7 @@ const ParentDashboard = (props) => {
   console.log(props);
   console.log('props.user._id');
   console.log(props.user._id);
+
   return (
     <div>
       <span>Welcome parent {props.user.name}</span>
@@ -13,7 +14,7 @@ const ParentDashboard = (props) => {
         <a href={'/parent/' + props.user._id + '/edit'}>Edit Profile</a>
       </button>
       <button>
-        <a href={'/child/create'}>Create Child</a>
+        <a href={'/child/' + props.user._id + '/create'}>Create Child</a>
       </button>
     </div>
   );

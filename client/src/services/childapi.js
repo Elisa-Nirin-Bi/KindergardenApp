@@ -6,9 +6,11 @@ const url = axios.create({
 });
 
 // to create child
-export const createChild = (data) => {
+export const createChild = (parentId, data) => {
   console.log('reached the clildapi');
-  return url.post('/child/create', data).then((response) => response.data);
+  return url
+    .post(`/child/${parentId}/create`, data)
+    .then((response) => response.data);
 };
 
 // to update child

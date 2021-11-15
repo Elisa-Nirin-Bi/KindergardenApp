@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Message = require('./../models/message');
+
 const routeGuard = require('./../middleware/route-guard');
 
 router.get('/', (req, res, next) => {
