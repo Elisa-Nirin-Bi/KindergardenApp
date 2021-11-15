@@ -3,22 +3,24 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const Child = require('./../models/child');
 const router = new Router();
+const User = require('./../models/user');
 const routeGuard = require('../middleware/route-guard');
 const Notification = require('../models/notification');
 const fileUploader = require('./../middleware/file-upload');
 
 // to create child profile
 
-router.post('/:parentId/create', routeGuard, (req, res, next) => {
-  const parentId = req.params;
-  const { name, address, emergencyContactNumber } = req.body;
+router.post('/create', routeGuard, (req, res, next) => {
+  const { name, address, emergencyContactNumber, parent } = req.body;
   Child.create({
     name,
     address,
     emergencyContactNumber,
-    parent: parentId
+    parent
   })
-
+    .then((kid) => {
+      return User.findByIdAndUpdate(parent, { $push: { child: kid._id } });
+    })
     .then((response) => res.json(response))
     .catch((error) => {
       next(error);

@@ -162,7 +162,7 @@ class App extends Component {
             )}
           />
           <PrivateRoute
-            path="/child/:parentId/create"
+            path="/child/create"
             authorized={
               !this.state.active ||
               (this.state.user && this.state.user.role === 'parent')

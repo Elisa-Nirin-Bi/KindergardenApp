@@ -20,7 +20,8 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['teacher', 'parent'],
     required: true
-  }
+  },
+  child: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Child' }]
 });
 
 const User = mongoose.model('User', schema);

@@ -14,7 +14,7 @@ const ParentDashboard = (props) => {
         <a href={'/parent/' + props.user._id + '/edit'}>Edit Profile</a>
       </button>
       <button>
-        <a href={'/child/' + props.user._id + '/create'}>Create Child</a>
+        <a href={'/child/create'}>Create Child</a>
       </button>
     </div>
   );
