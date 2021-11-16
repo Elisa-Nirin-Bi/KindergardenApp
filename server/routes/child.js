@@ -19,7 +19,9 @@ router.post('/create', routeGuard, (req, res, next) => {
     parent
   })
     .then((kid) => {
-      return User.findByIdAndUpdate(parent, { $push: { child: kid._id } });
+      return User.findByIdAndUpdate(parent, {
+        $push: { child: kid._id }
+      });
     })
     .then((response) => res.json(response))
     .catch((error) => {
