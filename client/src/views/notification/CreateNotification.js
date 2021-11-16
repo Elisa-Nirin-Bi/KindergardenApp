@@ -29,7 +29,7 @@ class CreateNotification extends Component {
     e.preventDefault();
 
     service
-      .saveNewNotification(this.state)
+      .saveNewNotification(this.props.match.params.id, this.state)
       .then((res) => {
         console.log('added new file: ', res);
       })

@@ -12,7 +12,8 @@ cloudinary.config({
 const storage = new multerStorageCloudinary.CloudinaryStorage({
   cloudinary: cloudinary.v2,
   params: {
-    allowed_formats: ['jpg', 'png'],
+    allowed_formats: ['jpg', 'png', 'mp4'],
+    resource_type: 'raw',
     public_id: (req, file) => {
       const parts = file.originalname.split('.');
       const extension = parts[parts.length - 1];

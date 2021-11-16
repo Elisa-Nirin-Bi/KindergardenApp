@@ -104,7 +104,9 @@ router.post(
 );
 
 router.post('/:id/create-notification', (req, res, next) => {
-  Notification.create(req.body)
+  const childProfile = req.params.id;
+  const { message, imageUrl } = req.body;
+  Notification.create({ message, imageUrl, childProfile })
     .then((newNotification) => {
       res.status(200).json(newNotification);
     })
