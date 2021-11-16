@@ -6,7 +6,8 @@ class ChildList extends Component {
   constructor() {
     super();
     this.state = {
-      childs: []
+      children: [],
+      searchTerm: ''
     };
   }
 
@@ -15,7 +16,7 @@ class ChildList extends Component {
       .then((response) => {
         let valuesloaded = response;
         this.setState(() => {
-          return { childs: [...valuesloaded] };
+          return { children: [...valuesloaded] };
         });
       })
       .catch((error) => {
@@ -41,30 +42,58 @@ class ChildList extends Component {
     this.loadChildren();
   }
 
+  setSearchTerm = (val) => {
+    let valueToPass = val;
+    this.setState(() => {
+      return { SearchTerm: valueToPass };
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Child List</h2>
-        {this.state.childs.map((child) => {
-          return (
-            <div key={child._id}>
-              {child.name}
-              <button>
-                <a href={'/child/' + child._id}>View Profile</a>
-              </button>
-              <button>
-                <a href={'/child/' + child._id + '/edit/'}>
-                  Edit Child Profile
-                </a>
-              </button>
-              <button
-                onClick={(event) => this.removeSelectedChild(event, child._id)}
-              >
-                Remove Child
-              </button>
-            </div>
-          );
-        })}
+        <input
+          type="text"
+          placeholder="Search ..."
+          onChange={(event) => {
+            this.setSearchTerm(event.target.value);
+          }}
+        />
+        {this.state.children
+          .filter((child) => {
+            if (!this.state.SearchTerm) {
+              return child;
+            } else if (
+              child.name
+                .toLowerCase()
+                .includes(this.state.SearchTerm.toLowerCase())
+            ) {
+              return child;
+            }
+          })
+          .map((child) => {
+            return (
+              <div key={child._id}>
+                {child.name}
+                <button>
+                  <a href={'/child/' + child._id}>View Profile</a>
+                </button>
+                <button>
+                  <a href={'/child/' + child._id + '/edit/'}>
+                    Edit Child Profile
+                  </a>
+                </button>
+                <button
+                  onClick={(event) =>
+                    this.removeSelectedChild(event, child._id)
+                  }
+                >
+                  Remove Child
+                </button>
+              </div>
+            );
+          })}
       </div>
     );
   }
