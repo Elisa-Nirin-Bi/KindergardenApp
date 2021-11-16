@@ -70,6 +70,8 @@ class ChildList extends Component {
                 .includes(this.state.SearchTerm.toLowerCase())
             ) {
               return child;
+            } else {
+              return null;
             }
           })
           .map((child) => {
