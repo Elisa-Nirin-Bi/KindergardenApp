@@ -9,6 +9,7 @@ import ChildCreate from './views/child/ChildCreate';
 import ChildList from './views/child/ChildList';
 import ChildNotification from './views/child/ChildNotification';
 import CreateNotification from './views/notification/CreateNotification';
+import ChildParents from './views/child/ChildParents';
 import SignInPage from './SignInPage';
 import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
@@ -138,6 +139,8 @@ class App extends Component {
             component={
               this.state.user && this.state.user.role === 'teacher'
                 ? ChildList
+                : this.state.user && this.state.user.role === 'parent'
+                ? (props) => <ChildParents user={this.state.user} />
                 : HomePage
             }
             onAuthenticationChange={this.handleAuthenticationChange}
@@ -167,7 +170,9 @@ class App extends Component {
               !this.state.active ||
               (this.state.user && this.state.user.role === 'parent')
             }
-            component={ChildCreate}
+            render={(props) => (
+              <ChildCreate user={this.state.user} {...props} />
+            )}
             exact
           />
           <PrivateRoute
@@ -187,7 +192,9 @@ class App extends Component {
           <PrivateRoute
             path="/child/:id"
             authorized={!this.state.active || this.state.user}
-            component={ChildProfile}
+            render={(props) => (
+              <ChildProfile user={this.state.user} {...props} />
+            )}
           />
         </Switch>
       </div>

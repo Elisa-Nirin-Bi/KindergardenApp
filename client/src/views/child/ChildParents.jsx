@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { getAllChildren } from '../../services/childapi';
 import { removeChild } from '../../services/childapi';
 
-class ChildList extends Component {
-  constructor() {
+class ChildParents extends Component {
+  constructor(props) {
     super();
     this.state = {
-      children: [],
-      searchTerm: ''
+      childs: [],
+      parent: null
     };
   }
 
@@ -16,7 +16,7 @@ class ChildList extends Component {
       .then((response) => {
         let valuesloaded = response;
         this.setState(() => {
-          return { children: [...valuesloaded] };
+          return { childs: [...valuesloaded] };
         });
       })
       .catch((error) => {
@@ -39,37 +39,29 @@ class ChildList extends Component {
   };
 
   componentDidMount() {
+    const parent = this.props.user;
+    this.setState({ parent });
     this.loadChildren();
   }
 
-  setSearchTerm = (val) => {
-    let valueToPass = val;
-    this.setState(() => {
-      return { SearchTerm: valueToPass };
-    });
-  };
-
   render() {
+    console.log('this.props');
+    console.log(this.props);
+    console.log('this.state');
+    console.log(this.state);
+    console.log('this.state.parent');
+    console.log(this.state.parent);
     return (
       <div>
-        <h2>Child List</h2>
-        <input
-          type="text"
-          placeholder="Search ..."
-          onChange={(event) => {
-            this.setSearchTerm(event.target.value);
-          }}
-        />
-        {this.state.children
-          .filter((child) => {
-            if (!this.state.SearchTerm) {
-              return child;
-            } else if (
-              child.name
-                .toLowerCase()
-                .includes(this.state.SearchTerm.toLowerCase())
-            ) {
-              return child;
+        <h2>Child List of the Parent</h2>
+        {this.state.childs
+          .filter((val) => {
+            console.log('valInside');
+            console.log(val);
+            if (val.parent === this.state.parent._id) {
+              return val;
+            } else {
+              return null;
             }
           })
           .map((child) => {
@@ -99,4 +91,4 @@ class ChildList extends Component {
   }
 }
 
-export default ChildList;
+export default ChildParents;
