@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getChild } from '../../services/childapi';
+import service from '../../services/notificationapi';
 
 class ChildProfile extends Component {
   constructor() {
@@ -9,7 +10,8 @@ class ChildProfile extends Component {
       name: null,
       address: null,
       emergencyContactNumber: null,
-      parent: null
+      parent: null,
+      notifications: null
     };
   }
 
@@ -30,6 +32,16 @@ class ChildProfile extends Component {
         });
         console.log('this.stateInsideComponent');
         console.log(this.state);
+        service
+          .getAllNotifications(childToShow._id)
+          .then((response) => {
+            const notifications = response;
+            this.setState({ notifications });
+          })
+          .catch((error) => {
+            alert('There was an error loading notifications of the child');
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -46,9 +58,31 @@ class ChildProfile extends Component {
         <h3>Emergency Telephone: {this.state.emergencyContactNumber}</h3>
         <h3>Parent: {this.state.parent}</h3>
         <a href={`/child/${this.state.id}/upload`}>Create Notification</a>
+        <div>
+          <div>
+            {this.state.notifications
+              ? this.state.notifications.map((data) => {
+                  console.log('data.image');
+                  console.log(data.imageUrl);
+                  return (
+                    <div key={Math.random()}>
+                      <p>
+                        <br></br>
+                        {data.message}
+                        <br></br>
+                        {data.imageUrl !== '' ? (
+                          <img src={data.imageUrl} alt="notification" />
+                        ) : null}
+                      </p>
+                    </div>
+                  );
+                })
+              : null}
+          </div>
+        </div>
       </div>
     ) : (
-      <div></div>
+      <div>No profile found</div>
     );
   }
 }
