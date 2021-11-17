@@ -88,6 +88,14 @@ router.get('/:id/notification', (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.get('/:id/allnotification', (req, res, next) => {
+  console.log('testallnotifications');
+  console.log(req.params);
+  Notification.find({ childProfile: req.params.id })
+    .then((notification) => res.status(200).json(notification))
+    .catch((err) => next(err));
+});
+
 router.post(
   '/:id/upload',
   fileUploader.single('imageUrl'),

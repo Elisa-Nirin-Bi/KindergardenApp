@@ -17,6 +17,13 @@ const getNotification = (id) => {
     .catch(errorHandler);
 };
 
+const getAllNotifications = (id) => {
+  return service
+    .get(`/child/${id}/allnotification`)
+    .then((res) => res.data)
+    .catch(errorHandler);
+};
+
 const handleUpload = (file, id) => {
   return service
     .post(`/child/${id}/upload`, file)
@@ -34,6 +41,7 @@ const saveNewNotification = (id, newNotification) => {
 export default {
   service,
   getNotification,
+  getAllNotifications,
   handleUpload,
   saveNewNotification
 };
