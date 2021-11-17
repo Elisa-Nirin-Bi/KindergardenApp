@@ -16,6 +16,20 @@ const childRouter = require('./routes/child');
 
 const app = express();
 
+const { createServer } = require('http');
+const { Server } = require('socket.io');
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  /* options */
+});
+
+io.on('connection', (socket) => {
+  // ...
+});
+
+httpServer.listen(3000);
+
 app.use(
   cors({
     origin: 'http://localhost:3501',

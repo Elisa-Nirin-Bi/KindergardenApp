@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getChild } from '../../services/childapi';
 import service from '../../services/notificationapi';
+import ChatWidget from './ChatWidget';
 
 class ChildProfile extends Component {
   constructor() {
@@ -71,7 +72,11 @@ class ChildProfile extends Component {
                         {data.message}
                         <br></br>
                         {data.imageUrl !== '' ? (
-                          <img src={data.imageUrl} alt="notification" />
+                          <img
+                            src={data.imageUrl}
+                            style={{ width: 150 }}
+                            alt="notification"
+                          />
                         ) : null}
                       </p>
                     </div>
@@ -80,6 +85,7 @@ class ChildProfile extends Component {
               : null}
           </div>
         </div>
+        <ChatWidget />
       </div>
     ) : (
       <div>No profile found</div>
