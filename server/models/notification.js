@@ -11,6 +11,11 @@ const schema = new mongoose.Schema(
     },
     imageUrl: {
       type: String
+    },
+    childProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Child'
     }
   },
   {

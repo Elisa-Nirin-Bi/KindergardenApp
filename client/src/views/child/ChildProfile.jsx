@@ -62,28 +62,39 @@ class ChildProfile extends Component {
         <div>
           <div>
             {this.state.notifications
-              ? this.state.notifications.map((data) => {
-                  console.log('data.image');
-                  console.log(data.imageUrl);
-                  return (
-                    <div key={Math.random()}>
-                      <p>
-                        <br></br>
-                        {data.message}
+              ? this.state.notifications
+                  .filter((notification) => {
+                    console.log('notification');
+                    console.log(notification);
+                    let currentChild = this.state.id;
+                    console.log('currentChild');
+                    console.log(currentChild);
+                    if (notification.childProfile === currentChild) {
+                      return notification;
+                    }
+                  })
+                  .map((data) => {
+                    console.log('data.image');
+                    console.log(data.imageUrl);
+                    return (
+                      <div key={Math.random()}>
+                        <p>
+                          <br></br>
+                          {data.message}
 
-                        <br></br>
-                        {data.imageUrl !== '' ? (
-                          <img
-                            src={data.imageUrl}
-                            style={{ width: 150 }}
-                            alt="notification"
-                          />
-                        ) : null}
-                      </p>
-                      {data.creationDate}
-                    </div>
-                  );
-                })
+                          <br></br>
+                          {data.imageUrl !== '' ? (
+                            <img
+                              src={data.imageUrl}
+                              style={{ width: 150 }}
+                              alt="notification"
+                            />
+                          ) : null}
+                        </p>
+                        {data.creationDate}
+                      </div>
+                    );
+                  })
               : null}
           </div>
         </div>
