@@ -2,21 +2,24 @@
 
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-  message: {
-    type: String,
-    required: true,
-    trim: true
+const schema = new mongoose.Schema(
+  {
+    message: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    imageUrl: {
+      type: String
+    }
   },
-  imageUrl: {
-    type: String
-  },
-  childProfile: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Child'
+  {
+    timestamps: {
+      createdAt: 'creationDate',
+      updatedAt: 'editingDate'
+    }
   }
-});
+);
 
 const Notification = mongoose.model('Notification', schema);
 

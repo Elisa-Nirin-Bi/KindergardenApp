@@ -70,6 +70,7 @@ class ChildProfile extends Component {
                       <p>
                         <br></br>
                         {data.message}
+
                         <br></br>
                         {data.imageUrl !== '' ? (
                           <img
@@ -79,6 +80,7 @@ class ChildProfile extends Component {
                           />
                         ) : null}
                       </p>
+                      {data.creationDate}
                     </div>
                   );
                 })

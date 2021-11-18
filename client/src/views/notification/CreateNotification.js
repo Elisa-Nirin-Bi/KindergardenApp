@@ -33,6 +33,9 @@ class CreateNotification extends Component {
       .then((res) => {
         console.log('added new file: ', res);
       })
+      .then(() => {
+        this.props.history.push('/');
+      })
       .catch((err) => console.log('Error while adding the new file: ', err));
   };
 

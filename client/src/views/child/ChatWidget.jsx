@@ -10,6 +10,7 @@ function ChatWidget() {
     addResponseMessage('Hi');
   }, []);
   const handleNewUserMessage = (newMessage) => {
+    console.log(`New message: ${newMessage}`);
     addResponseMessage('response...');
   };
   return (
