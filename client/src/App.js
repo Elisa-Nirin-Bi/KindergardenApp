@@ -7,7 +7,6 @@ import ChildProfile from './views/child/ChildProfile';
 import ChildEdit from './views/child/ChildEdit';
 import ChildCreate from './views/child/ChildCreate';
 import ChildList from './views/child/ChildList';
-import ChildNotification from './views/child/ChildNotification';
 import CreateNotification from './views/notification/CreateNotification';
 import ChildParents from './views/child/ChildParents';
 import SignInPage from './SignInPage';

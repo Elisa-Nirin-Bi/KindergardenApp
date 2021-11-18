@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { getChild } from '../../services/childapi';
 import service from '../../services/notificationapi';
-import ChatWidget from './ChatWidget';
 
 class ChildProfile extends Component {
   constructor() {
@@ -59,6 +58,7 @@ class ChildProfile extends Component {
         <h3>Emergency Telephone: {this.state.emergencyContactNumber}</h3>
         <h3>Parent: {this.state.parent}</h3>
         <a href={`/child/${this.state.id}/upload`}>Create Notification</a>
+
         <div>
           <div>
             {this.state.notifications
@@ -87,7 +87,6 @@ class ChildProfile extends Component {
               : null}
           </div>
         </div>
-        <ChatWidget />
       </div>
     ) : (
       <div>No profile found</div>
