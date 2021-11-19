@@ -14,11 +14,14 @@ import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
 import TeacherDashboard from './views/TeacherDashboard';
 import ParentDashboard from './views/ParentDashboard';
+import MessageBoard from './views/message/MessageBoard';
+import SingleMessage from './views/message/SingleMessage';
 import HomeIcon from '@mui/icons-material/Home';
 
 import HomePage from './HomePage';
 import PrivateRoute from './PrivateRoute';
 import { signOut, loadAuthenticatedUser } from './services/authapi';
+import UserSearch from './views/message/UserSearch';
 
 class App extends Component {
   constructor() {
@@ -181,6 +184,24 @@ class App extends Component {
               (this.state.user && this.state.user.role === 'teacher')
             }
             component={ChildList}
+            exact
+          />
+          <PrivateRoute
+            path="/messages"
+            authorized={!this.state.active || this.state.user}
+            component={MessageBoard}
+            exact
+          />
+          <PrivateRoute
+            path="/message/:id"
+            authorized={!this.state.active || this.state.user}
+            component={SingleMessage}
+            exact
+          />
+          <PrivateRoute
+            path="/users"
+            authorized={!this.state.active || this.state.user}
+            component={UserSearch}
             exact
           />
           <PrivateRoute

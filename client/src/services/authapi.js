@@ -67,3 +67,6 @@ export const signOut = () => {
 export const loadAuthenticatedUser = () => {
   return url.get('/authentication/me').then((response) => response.data.user);
 };
+
+export const getAllUsers = () =>
+  url.get('/users').then((response) => response.data);

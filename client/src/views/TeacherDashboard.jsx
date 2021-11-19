@@ -12,6 +12,7 @@ const TeacherDashboard = (props) => {
       <button>
         <a href={'/' + props.user._id + '/edit'}>Edit Profile</a>
       </button>
+      <a href={'/messages'}>Messages</a>
     </div>
   );
 };
