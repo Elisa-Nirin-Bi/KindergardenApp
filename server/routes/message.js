@@ -6,12 +6,12 @@ const routeGuard = require('./../middleware/route-guard');
 
 router.post('/:receiver', (req, res, next) => {
   const { textBody, sender, receiver } = req.body;
-  const receiverUser = req.params.receiver;
-
+  const receiverId = req.params.receiver;
+  const senderId = req.user._id;
   Message.create({
     textBody,
-    sender: req.user._id,
-    receiver: receiverUser
+    sender: senderId,
+    receiver: receiverId
   })
 
     .then((message) => res.json(message))
