@@ -20,7 +20,7 @@ export class UserSearch extends Component {
       })
       .catch((error) => {
         console.log(error);
-        alert('You could not find your user!');
+        alert('We could not find your user!');
       });
   };
 
@@ -35,37 +35,36 @@ export class UserSearch extends Component {
   render() {
     return (
       <div>
-        <h2>Find User</h2>
-        <input
-          type="text"
-          onChange={(event) => {
-            this.nameToSearch(event.target.value);
-          }}
-        />
-        {this.state.users
-          .filter((user) => {
-            if (!this.state.SearchTerm) {
-              return user;
-            } else if (
-              user.name
-                .toLowerCase()
-                .includes(this.state.SearchTerm.toLowerCase())
-            ) {
-              return user;
-            } else {
-              return null;
-            }
-          })
-          .map((user) => {
-            return (
-              <div key={user._id}>
-                {user.name}
-                <button>
-                  <a href={'/message/' + user._id}>Send Message</a>
-                </button>
-              </div>
-            );
-          })}
+        <div>
+          <h2>Find User</h2>
+          <input
+            type="text"
+            onChange={(event) => {
+              this.nameToSearch(event.target.value);
+            }}
+          />
+          {this.state.users
+            .filter((user) => {
+              if (!this.state.SearchTerm) {
+                return user;
+              } else if (
+                user.name
+                  .toLowerCase()
+                  .includes(this.state.SearchTerm.toLowerCase())
+              ) {
+                return user;
+              } else {
+                return null;
+              }
+            })
+            .map((user) => {
+              return (
+                <div key={user._id}>
+                  <a href={'/message/' + user._id}> {user.name}</a>
+                </div>
+              );
+            })}
+        </div>
       </div>
     );
   }

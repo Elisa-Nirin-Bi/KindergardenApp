@@ -25,13 +25,15 @@ export class SingleMessage extends Component {
       textBody,
       sender
     })
-      .then((user) => {})
+      .then((user) => {
+        this.props.history.push(`/messages/${this.props.match.params.id}`);
+      })
       .catch((error) => {
         console.log(error);
         alert('There was an error creating the message');
       });
   };
-  componentDidUpdate() {
+  componentDidMount() {
     let sender = this.props.user;
 
     if (sender !== this.state.sender) {

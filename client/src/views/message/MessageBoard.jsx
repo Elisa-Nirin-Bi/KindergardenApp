@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserSearch from './UserSearch';
 
-export class Message extends Component {
+export class MessageBoard extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ export class Message extends Component {
   }
 }
 
-export default Message;
+export default MessageBoard;
