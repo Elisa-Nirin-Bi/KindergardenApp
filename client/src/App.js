@@ -9,6 +9,7 @@ import ChildCreate from './views/child/ChildCreate';
 import ChildList from './views/child/ChildList';
 import CreateNotification from './views/notification/CreateNotification';
 import ChildParents from './views/child/ChildParents';
+import SubscriptionView from './views/Subscription';
 import SignInPage from './SignInPage';
 import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
@@ -33,6 +34,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.loadUser();
+  }
+
+  loadUser = () => {
     loadAuthenticatedUser()
       .then((user) => {
         if (user) {
@@ -45,7 +50,7 @@ class App extends Component {
       .finally(() => {
         this.setState({ active: true });
       });
-  }
+  };
 
   handleAuthenticationChange = (user) => {
     this.setState({ user });
@@ -214,6 +219,17 @@ class App extends Component {
             authorized={!this.state.active || this.state.user}
             render={(props) => (
               <ChildProfile user={this.state.user} {...props} />
+            )}
+          />
+          <PrivateRoute
+            path="/subscription"
+            redirect="/sign-up"
+            authorized={
+              !this.state.loaded ||
+              (this.state.user && this.state.user.role === 'viewer')
+            }
+            render={(props) => (
+              <SubscriptionView {...props} onUserRefresh={this.loadUser} />
             )}
           />
         </Switch>

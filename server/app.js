@@ -15,6 +15,7 @@ const baseRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const childRouter = require('./routes/child');
 const messageRouter = require('./routes/message');
+const subscriptionRouter = require('./routes/subscription');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/child', childRouter);
 app.use('/message', messageRouter);
+app.use('/subscription', subscriptionRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
