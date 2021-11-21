@@ -1,4 +1,6 @@
 import React from 'react';
+import Subscription from './Subscription';
+import { Link } from 'react-router-dom';
 
 const ParentDashboard = (props) => {
   console.log('props5');
@@ -9,6 +11,10 @@ const ParentDashboard = (props) => {
   return (
     <div>
       <span>Welcome parent {props.user.name}</span>
+      <Link to="/subscription">
+        <p>Subscription</p>
+      </Link>
+
       <button onClick={props.onClick}>Sign Out</button>
       <button>
         <a href={'/parent/' + props.user._id + '/edit'}>Edit Profile</a>
