@@ -24,7 +24,6 @@ class TeacherSignUp extends Component {
     const { name, email, password } = this.state;
     signUp({ name, email, password, role: 'teacher' })
       .then((user) => {
-        this.props.onAuthenticationChange(user);
         this.props.history.push('/sign-in');
       })
 

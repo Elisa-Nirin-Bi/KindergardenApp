@@ -24,7 +24,6 @@ class ParentSignUp extends Component {
     const { name, email, password } = this.state;
     parentSignUp({ name, email, password, role: 'parent' })
       .then((user) => {
-        this.props.onAuthenticationChange(user);
         this.props.history.push('/sign-in');
       })
 
