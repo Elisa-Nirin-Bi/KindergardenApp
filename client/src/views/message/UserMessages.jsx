@@ -10,6 +10,13 @@ export class UserMessages extends Component {
     };
   }
   componentDidMount() {
+    getMessages(this.props.match.params.id)
+      .then((messages) => {
+        this.setState({ messages });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(this.props.match.params.id);
     setInterval(() => {
       getMessages(this.props.match.params.id)

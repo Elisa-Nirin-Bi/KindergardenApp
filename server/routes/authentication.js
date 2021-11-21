@@ -5,6 +5,7 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const Child = require('./../models/child');
+const routeGuard = require('../middleware/route-guard');
 const router = new Router();
 
 router.post('/sign-up', (req, res, next) => {
@@ -28,7 +29,7 @@ router.post('/sign-up', (req, res, next) => {
     });
 });
 
-router.patch('/:id/edit', (req, res, next) => {
+router.patch('/:id/edit', routeGuard, (req, res, next) => {
   const { id } = req.params;
   const { name, email, password } = req.body;
   bcryptjs

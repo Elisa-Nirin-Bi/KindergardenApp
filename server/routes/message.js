@@ -4,7 +4,7 @@ const User = require('./../models/user');
 const Message = require('./../models/message');
 const routeGuard = require('./../middleware/route-guard');
 
-router.post('/:receiver', (req, res, next) => {
+router.post('/:receiver', routeGuard, (req, res, next) => {
   const { textBody, sender, receiver } = req.body;
   const receiverId = req.params.receiver;
   const senderId = req.user._id;
@@ -20,7 +20,7 @@ router.post('/:receiver', (req, res, next) => {
     });
 });
 
-router.post('/user/create/:receiver', (req, res, next) => {
+router.post('/user/create/:receiver', routeGuard, (req, res, next) => {
   const { textBody, sender, receiver } = req.body;
   const receiverId = req.params.receiver;
   const senderId = req.user._id;
@@ -36,7 +36,7 @@ router.post('/user/create/:receiver', (req, res, next) => {
     });
 });
 
-router.get('/user/:receiver', (req, res, next) => {
+router.get('/user/:receiver', routeGuard, (req, res, next) => {
   Message.find({})
     .populate('sender')
     .populate('receiver')
@@ -46,7 +46,7 @@ router.get('/user/:receiver', (req, res, next) => {
     });
 });
 
-router.get('/all', (req, res, next) => {
+router.get('/all', routeGuard, (req, res, next) => {
   Message.find({})
     .populate('sender')
     .populate('receiver')

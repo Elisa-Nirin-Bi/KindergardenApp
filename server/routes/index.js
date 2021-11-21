@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   res.json({ type: 'success', data: { title: 'Hello World' } });
 });
 
-router.get('/users', (req, res, next) => {
+router.get('/users', routeGuard, (req, res, next) => {
   User.find()
     .then((allUsers) => res.json(allUsers))
     .catch((error) => {
@@ -18,7 +18,7 @@ router.get('/users', (req, res, next) => {
     });
 });
 
-router.get('/one-user', (req, res, next) => {
+router.get('/one-user', routeGuard, (req, res, next) => {
   User.find()
     .then((OneUser) => res.json(OneUser))
     .catch((error) => {
