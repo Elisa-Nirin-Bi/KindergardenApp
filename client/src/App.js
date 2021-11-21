@@ -9,19 +9,23 @@ import ChildCreate from './views/child/ChildCreate';
 import ChildList from './views/child/ChildList';
 import CreateNotification from './views/notification/CreateNotification';
 import ChildParents from './views/child/ChildParents';
+import SubscriptionView from './views/Subscription';
 import SignInPage from './SignInPage';
 import TeacherUpdate from './TeacherEdit';
 import ParentUpdate from './ParentUpdate';
 import TeacherDashboard from './views/TeacherDashboard';
 import ParentDashboard from './views/ParentDashboard';
 import MessageBoard from './views/message/MessageBoard';
+
 import SingleMessage from './views/message/SingleMessage';
 import HomeIcon from '@mui/icons-material/Home';
-
+import SingleUserMessage from './views/message/SingleUserMessage';
 import HomePage from './HomePage';
 import PrivateRoute from './PrivateRoute';
 import { signOut, loadAuthenticatedUser } from './services/authapi';
 import UserSearch from './views/message/UserSearch';
+import InteractingUsers from './views/message/InteractingUsers';
+import UserMessages from './views/message/UserMessages';
 
 class App extends Component {
   constructor() {
@@ -187,23 +191,52 @@ class App extends Component {
             exact
           />
           <PrivateRoute
-            path="/messages"
+            path="/message/list"
             authorized={!this.state.active || this.state.user}
-            component={MessageBoard}
+            render={(props) => (
+              <MessageBoard {...props} user={this.state.user} />
+            )}
             exact
+          />
+          <PrivateRoute
+            path="/message/list/:id"
+            authorized={!this.state.active || this.state.user}
+            render={(props) => (
+              <InteractingUsers user={this.state.user} {...props} />
+            )}
           />
           <PrivateRoute
             path="/message/:id"
             authorized={!this.state.active || this.state.user}
-            component={SingleMessage}
+            render={(props) => (
+              <SingleMessage user={this.state.user} {...props} />
+            )}
             exact
           />
+
+          <PrivateRoute
+            path="/message/user/:id"
+            authorized={!this.state.active || this.state.user}
+            render={(props) => (
+              <UserMessages user={this.state.user} {...props} />
+            )}
+          />
+
+          <PrivateRoute
+            path="/message/user/create/:id"
+            authorized={!this.state.active || this.state.user}
+            render={(props) => (
+              <SingleUserMessage user={this.state.user} {...props} />
+            )}
+          />
+
           <PrivateRoute
             path="/users"
             authorized={!this.state.active || this.state.user}
             component={UserSearch}
             exact
           />
+
           <PrivateRoute
             path="/child/:id/edit"
             authorized={!this.state.active || this.state.user}
@@ -214,6 +247,17 @@ class App extends Component {
             authorized={!this.state.active || this.state.user}
             render={(props) => (
               <ChildProfile user={this.state.user} {...props} />
+            )}
+          />
+          <PrivateRoute
+            path="/subscription"
+            redirect="/sign-up"
+            authorized={
+              !this.state.loaded ||
+              (this.state.user && this.state.user.role === 'viewer')
+            }
+            render={(props) => (
+              <SubscriptionView {...props} onUserRefresh={this.loadUser} />
             )}
           />
         </Switch>

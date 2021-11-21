@@ -18,4 +18,12 @@ router.get('/users', (req, res, next) => {
     });
 });
 
+router.get('/one-user', (req, res, next) => {
+  User.find()
+    .then((OneUser) => res.json(OneUser))
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = router;

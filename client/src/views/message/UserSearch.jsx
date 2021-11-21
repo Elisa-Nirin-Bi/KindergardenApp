@@ -60,7 +60,7 @@ export class UserSearch extends Component {
             .map((user) => {
               return (
                 <div key={user._id}>
-                  <a href={'/message/' + user._id}> {user.name}</a>
+                  <a href={'/message/' + user._id}>{user.name}</a>
                 </div>
               );
             })}

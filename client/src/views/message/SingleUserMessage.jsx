@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { createMessage } from '../../services/messageapi';
+import { createUserMessage } from '../../services/messageapi';
 
-export class SingleMessage extends Component {
+export class SingleUserMessage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,6 @@ export class SingleMessage extends Component {
   }
 
   handleInputChange = (event) => {
-    console.log(this.props.match.params.id);
     const { value, name } = event.target;
     this.setState({
       [name]: value
@@ -22,7 +21,7 @@ export class SingleMessage extends Component {
     event.preventDefault();
     const { textBody, sender } = this.state;
 
-    createMessage(this.props.match.params.id, {
+    createUserMessage(this.props.receiver.params.id, {
       textBody,
       sender
     })
@@ -51,13 +50,13 @@ export class SingleMessage extends Component {
     return (
       <div>
         <div>
-          <form onSubmit={this.handleFormSubmission}>
+          <form>
             <input
               onChange={this.handleInputChange}
               name="textBody"
               value={this.state.textBody}
             ></input>
-            <button>Submit</button>
+            <button onClick={this.handleFormSubmission}>Submit</button>
           </form>
         </div>
       </div>
@@ -65,4 +64,4 @@ export class SingleMessage extends Component {
   }
 }
 
-export default SingleMessage;
+export default SingleUserMessage;

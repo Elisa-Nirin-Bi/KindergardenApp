@@ -20,13 +20,36 @@ router.post('/:receiver', (req, res, next) => {
     });
 });
 
-router.get('/:receiver', routeGuard, (req, res, next) => {
-  Message.find({
-    $or: [
-      { sender: req.user._id, receiver: req.params.id },
-      { sender: req.params.receiver, receiver: req.user._id }
-    ]
+router.post('/user/create/:receiver', (req, res, next) => {
+  const { textBody, sender, receiver } = req.body;
+  const receiverId = req.params.receiver;
+  const senderId = req.user._id;
+  Message.create({
+    textBody,
+    sender: senderId,
+    receiver: receiverId
   })
+
+    .then((message) => res.json(message))
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.get('/user/:receiver', (req, res, next) => {
+  Message.find({})
+    .populate('sender')
+    .populate('receiver')
+    .then((allMessages) => res.json(allMessages))
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.get('/all', (req, res, next) => {
+  Message.find({})
+    .populate('sender')
+    .populate('receiver')
     .then((allMessages) => res.json(allMessages))
     .catch((error) => {
       next(error);
