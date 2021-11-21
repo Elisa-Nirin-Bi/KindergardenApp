@@ -37,6 +37,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.loadUser();
+  }
+
+  loadUser = () => {
     loadAuthenticatedUser()
       .then((user) => {
         if (user) {
@@ -49,7 +53,7 @@ class App extends Component {
       .finally(() => {
         this.setState({ active: true });
       });
-  }
+  };
 
   handleAuthenticationChange = (user) => {
     this.setState({ user });
