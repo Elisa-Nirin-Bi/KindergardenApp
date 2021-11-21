@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getChild } from '../../services/childapi';
 import service from '../../services/notificationapi';
-
+import Moment from 'react-moment';
 class ChildProfile extends Component {
   constructor() {
     super();
@@ -91,7 +91,9 @@ class ChildProfile extends Component {
                             />
                           ) : null}
                         </p>
-                        {data.creationDate}
+                        <Moment format="YYYY-MM-DD HH:mm">
+                          {data.creationDate}
+                        </Moment>
                       </div>
                     );
                   })

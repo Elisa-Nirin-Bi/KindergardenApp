@@ -22,11 +22,6 @@ export class UserMessages extends Component {
     }, 5 * 1000);
   }
 
-  componentWillUnmount() {
-    this.intervalId = setInterval();
-    clearInterval(this.intervalId);
-  }
-
   render() {
     return (
       <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TeacherDashboard = (props) => {
   console.log('props4');
@@ -7,13 +8,20 @@ const TeacherDashboard = (props) => {
   console.log(props.user._id);
   return (
     <div>
-      <span>Welcome teacher {props.user.name}</span>
-      <button onClick={props.onClick}>Sign Out</button>
-      <button>
-        <a href={'/' + props.user._id + '/edit'}>Edit Profile</a>
-      </button>
-      {/* <a href={'/message/list/' + props.user._id}>Messages</a> */}
-      <a href="/message/list">Messages</a>
+      <nav>
+        {(props.user && (
+          <>
+            <span>Welcome teacher {props.user.name}</span>
+            <a href={'/' + props.user._id + '/edit'}>Edit Profile</a>
+            <a href="/message/list">Messages</a>
+            <button onClick={props.onClick}>Sign Out</button>
+          </>
+        )) || (
+          <>
+            <Link to="/sign-in">Sign In</Link>
+          </>
+        )}
+      </nav>
     </div>
   );
 };

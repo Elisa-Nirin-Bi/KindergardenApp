@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { signIn } from './services/authapi';
+import { Link } from 'react-router-dom';
 
 class SignInPage extends Component {
   constructor() {
@@ -53,6 +54,7 @@ class SignInPage extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
           />
+          <Link to="/">Not a user yet? Sign Up!</Link>
           <button>Sign In</button>
         </form>
       </div>

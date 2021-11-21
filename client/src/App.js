@@ -75,6 +75,7 @@ class App extends Component {
           </Link>
         </nav>
         {(this.state.user &&
+          this.state.active &&
           ((this.state.user.role === 'teacher' && (
             <>
               <TeacherDashboard
