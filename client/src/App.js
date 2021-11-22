@@ -101,6 +101,9 @@ class App extends Component {
                 <Link to="/parent/sign-up">
                   <h2>Parent</h2>
                 </Link>
+                <Link to="/sign-in">
+                  <h2>Log In</h2>
+                </Link>
               </div>
             </>
           )}

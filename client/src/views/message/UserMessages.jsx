@@ -43,7 +43,7 @@ export class UserMessages extends Component {
                   <li style={{ paddingTop: '50' }} key={message.id}>
                     {message.textBody}
                     <p>
-                      <h3>{message.sender.name}</h3>
+                      <h5>by {message.sender.name}</h5>
                       <Moment format="YYYY-MM-DD HH:mm">
                         {message.creationDate}
                       </Moment>
@@ -58,7 +58,7 @@ export class UserMessages extends Component {
                   <li style={{ paddingTop: '50' }} key={message.id}>
                     {message.textBody}
                     <p>
-                      <h3>by {message.sender.name}</h3>
+                      <h5>by {message.sender.name}</h5>
                       <Moment format="YYYY-MM-DD HH:mm">
                         {message.creationDate}
                       </Moment>

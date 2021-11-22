@@ -10,10 +10,7 @@ const ParentDashboard = (props) => {
 
   return (
     <div>
-      <span>Welcome parent {props.user.name}</span>
-      <Link to="/subscription">
-        <p>Subscription</p>
-      </Link>
+      <span>Welcome parent {props.user.name},</span>
 
       <button onClick={props.onClick}>Sign Out</button>
       <button>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getChild } from '../../services/childapi';
 import service from '../../services/notificationapi';
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 class ChildProfile extends Component {
   constructor() {
@@ -57,8 +58,18 @@ class ChildProfile extends Component {
         <h3>Address: {this.state.address}</h3>
         <h3>Emergency Telephone: {this.state.emergencyContactNumber}</h3>
         <h3>Parent: {this.state.parent}</h3>
-        <a href={`/child/${this.state.id}/upload`}>Create Notification</a>
-
+        {(this.props.user.role === 'teacher' && (
+          <>
+            <a href={`/child/${this.state.id}/upload`}>Create Notification</a>
+          </>
+        )) || <></>}
+        {(this.props.user.role === 'parent' && (
+          <>
+            <Link to="/subscription">
+              <p>Subscription</p>
+            </Link>
+          </>
+        )) || <></>}
         <div>
           <div>
             {this.state.notifications
