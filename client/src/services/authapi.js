@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-const url = axios.create({
-  baseURL: 'http://localhost:3500',
-  withCredentials: true
-});
+import api from './api';
 
 export const signUp = (body) => {
-  return url.post('/authentication/sign-up', body).then((response) => {
+  return api.post('/authentication/sign-up', body).then((response) => {
     return response.data.user;
   });
 };
@@ -23,7 +20,7 @@ export const updateTeacher = (body) => {
   console.log('password');
   console.log(password);
   const bodynew = { name, email, password };
-  return url
+  return api
     .patch(`/authentication/${idUser}/edit`, bodynew)
     .then((response) => {
       return response.data.user;
@@ -42,7 +39,7 @@ export const updateParent = (body) => {
   console.log('password');
   console.log(password);
   const bodynew = { name, email, password };
-  return url
+  return api
     .patch(`/authentication/parent/${idUser}/edit`, bodynew)
     .then((response) => {
       return response.data.user;
@@ -50,23 +47,23 @@ export const updateParent = (body) => {
 };
 
 export const parentSignUp = (body) => {
-  return url.post('/authentication/parent/sign-up', body).then((response) => {
+  return api.post('/authentication/parent/sign-up', body).then((response) => {
     return response.data.user;
   });
 };
 
 export const signIn = (body) =>
-  url
+  api
     .post('/authentication/sign-in', body)
     .then((response) => response.data.user);
 
 export const signOut = () => {
-  return url.post('/authentication/sign-out');
+  return api.post('/authentication/sign-out');
 };
 
 export const loadAuthenticatedUser = () => {
-  return url.get('/authentication/me').then((response) => response.data.user);
+  return api.get('/authentication/me').then((response) => response.data.user);
 };
 
 export const getAllUsers = () =>
-  url.get('/users').then((response) => response.data);
+  api.get('/users').then((response) => response.data);

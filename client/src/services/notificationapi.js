@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: 'http://localhost:3500'
+  baseURL: process.env.REACT_APP_API_URL
 });
 
 const errorHandler = (err) => {

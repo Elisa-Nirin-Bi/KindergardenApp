@@ -1,24 +1,21 @@
 import axios from 'axios';
 
-const url = axios.create({
-  baseURL: 'http://localhost:3500',
-  withCredentials: true
-});
+import api from './api';
 
 export const createMessage = (receiverId, data) => {
-  return url
+  return api
     .post(`/message/${receiverId}`, data)
     .then((response) => response.data);
 };
 
 export const createUserMessage = (receiverId, data) => {
-  return url
+  return api
     .post(`/message/user/create/${receiverId}`, data)
     .then((response) => response.data);
 };
 
 export const getMessages = (receiverId) =>
-  url.get(`/message/user/${receiverId}`).then((response) => response.data);
+  api.get(`/message/user/${receiverId}`).then((response) => response.data);
 
 export const getAllMessages = () =>
-  url.get('/message/all').then((response) => response.data);
+  api.get('/message/all').then((response) => response.data);
