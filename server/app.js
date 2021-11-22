@@ -21,7 +21,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_APP_ORIGIN, 'http://localhost:3501'],
+    origin: 'http://localhost:3501',
+
     credentials: true
   })
 );
@@ -33,7 +34,6 @@ app.use(
   expressSession({
     secret: process.env.SESSION_SECRET,
     resave: true,
-
     saveUninitialized: false,
     cookie: {
       maxAge: 15 * 24 * 60 * 60 * 1000,

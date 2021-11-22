@@ -1,6 +1,7 @@
 'use strict';
 
 const User = require('./../models/user');
+const Subscription = require('./../models/subscription');
 
 module.exports = (req, res, next) => {
   const userId = req.session.userId;
@@ -8,6 +9,10 @@ module.exports = (req, res, next) => {
     User.findById(userId)
       .then((user) => {
         req.user = user;
+        return Subscription.findOne({ user: userId, active: true });
+      })
+      .then((subscription) => {
+        req.user.subscription = subscription;
         next();
       })
       .catch((error) => {
