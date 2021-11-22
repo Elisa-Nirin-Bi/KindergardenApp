@@ -21,7 +21,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [ process.env.CLIENT_APP_ORIGIN, 'https://kindergardenapp.netlify.app'
+    origin: [process.env.CLIENT_APP_ORIGIN, 'http://localhost:3501/'],
     credentials: true
   })
 );
