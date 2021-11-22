@@ -32,40 +32,44 @@ export class UserMessages extends Component {
   render() {
     return (
       <div>
-        <h1>hi</h1>
-
-        <ul>
-          {this.state.messages.map((message) => {
-            if (
-              this.props.match.params.id === message.receiver._id &&
-              message.sender._id === this.props.user._id
-            ) {
-              return (
-                <li key={message.id}>
-                  {message.textBody}
-                  <p>{message.sender.name}</p>
-                  <Moment format="YYYY-MM-DD HH:mm">
-                    {message.creationDate}
-                  </Moment>
-                </li>
-              );
-            } else if (
-              this.props.match.params.id === message.sender._id &&
-              message.receiver._id === this.props.user._id
-            ) {
-              return (
-                <li key={message.id}>
-                  {message.textBody}
-                  <p>{message.sender.name}</p>
-                  <Moment format="YYYY-MM-DD HH:mm">
-                    {message.creationDate}
-                  </Moment>
-                </li>
-              );
-            }
-          })}
-        </ul>
-        <SingleUserMessage receiver={this.props.match} />
+        <div className="userMessages">
+          <ul>
+            {this.state.messages.map((message) => {
+              if (
+                this.props.match.params.id === message.receiver._id &&
+                message.sender._id === this.props.user._id
+              ) {
+                return (
+                  <li style={{ paddingTop: '50' }} key={message.id}>
+                    {message.textBody}
+                    <p>
+                      <h3>{message.sender.name}</h3>
+                      <Moment format="YYYY-MM-DD HH:mm">
+                        {message.creationDate}
+                      </Moment>
+                    </p>
+                  </li>
+                );
+              } else if (
+                this.props.match.params.id === message.sender._id &&
+                message.receiver._id === this.props.user._id
+              ) {
+                return (
+                  <li style={{ paddingTop: '50' }} key={message.id}>
+                    {message.textBody}
+                    <p>
+                      <h3>by {message.sender.name}</h3>
+                      <Moment format="YYYY-MM-DD HH:mm">
+                        {message.creationDate}
+                      </Moment>
+                    </p>
+                  </li>
+                );
+              }
+            })}
+          </ul>
+          <SingleUserMessage receiver={this.props.match} />
+        </div>
       </div>
     );
   }

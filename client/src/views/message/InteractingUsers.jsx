@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getAllMessages } from '../../services/messageapi';
 import { Link } from 'react-router-dom';
+import { SpeechBubble } from 'react-kawaii';
 
 export class InteractingUsers extends Component {
   constructor(props) {
@@ -30,17 +31,19 @@ export class InteractingUsers extends Component {
       })
       .catch((error) => {
         console.log(error);
-        alert('We could not find your user!');
       });
   }
 
   render() {
     return (
-      <div>
+      <div className="interactingUsers">
         <ul>
           {this.state.conversations.map((user) => (
-            <li key={user._id}>
-              <Link to={`/message/user/${user._id}`}>{user.name}</Link>
+            <li className="interactingUsers-li" key={user._id}>
+              <Link to={`/message/user/${user._id}`}>
+                {user.name}{' '}
+                <SpeechBubble size={40} mood="happy" color="#aee5ef" />
+              </Link>
             </li>
           ))}
         </ul>

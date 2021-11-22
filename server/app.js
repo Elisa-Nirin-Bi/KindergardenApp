@@ -21,7 +21,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_APP_ORIGIN, 'http://localhost:3501/'],
+    origin: [process.env.CLIENT_APP_ORIGIN, 'http://localhost:3501'],
     credentials: true
   })
 );
@@ -33,13 +33,11 @@ app.use(
   expressSession({
     secret: process.env.SESSION_SECRET,
     resave: true,
-    proxy: true,
+
     saveUninitialized: false,
     cookie: {
       maxAge: 15 * 24 * 60 * 60 * 1000,
-      httpOnly: true,
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : false, // *
-      secure: process.env.NODE_ENV === 'production' // *
+      httpOnly: true
     },
     store: connectMongo.create({
       mongoUrl: process.env.MONGODB_URI,

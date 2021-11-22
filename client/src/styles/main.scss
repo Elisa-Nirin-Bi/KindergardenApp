@@ -4,9 +4,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -19,6 +17,17 @@ a {
     color: initial;
   }
 }
+.nav-div {
+  background-color: #aee5ef;
+  display: flex;
+  justify-content: space-around;
+}
+.div-access {
+  display: flex;
+  column-gap: 50px;
+}
+.App {
+}
 .signIn-div,
 .teacherSignUp-div,
 .parentSignUp-div {
@@ -26,7 +35,7 @@ a {
   flex-direction: column;
   border: 1px solid rgb(194, 191, 191);
   height: 350px;
-  box-shadow: 0 0 2em #c0e8ff;
+  box-shadow: 0 0 2em #aee5ef;
   margin: 50px auto auto auto;
   width: 300px;
   border-radius: 20px;
@@ -49,4 +58,52 @@ input {
 }
 .user-div {
   margin-bottom: 30px;
+}
+
+.childName {
+  height: 170px;
+  width: 300px;
+  background-color: #aee5ef;
+  margin: auto;
+}
+
+.interactingUsers > li {
+  margin-bottom: 30px;
+  height: 120px;
+  width: 300px;
+  background-color: #aee5ef;
+}
+
+.childName > h3 {
+  padding-top: 30px;
+}
+.interactingUsers > ul > li {
+  padding-bottom: 20px;
+  list-style-type: none;
+}
+.teacher-board-div {
+  display: flex;
+  align-items: stretch;
+}
+
+.userMessages {
+  border: 1pc pink solid;
+  width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(194, 191, 191);
+  height: 90%;
+  box-shadow: 0 0 2em #aee5ef;
+  margin: 50px auto auto auto;
+  width: 700px;
+  border-radius: 20px;
+}
+.userMessages > ul {
+  list-style-type: none;
+}
+.singleUserMessage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

@@ -33,6 +33,9 @@ export class SingleMessage extends Component {
           textBody: ''
         });
       })
+      .then(() => {
+        this.props.history.push(`/message/user/${this.props.match.params.id}`);
+      })
       .catch((error) => {
         console.log(error);
         alert('There was an error creating the message');

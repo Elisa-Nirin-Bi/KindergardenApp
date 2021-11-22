@@ -50,7 +50,7 @@ export class SingleUserMessage extends Component {
     return (
       <div>
         <div>
-          <form>
+          <form className="singleUserMessage">
             <input
               onChange={this.handleInputChange}
               name="textBody"

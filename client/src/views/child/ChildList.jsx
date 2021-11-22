@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { getAllChildren } from '../../services/childapi';
 import { removeChild } from '../../services/childapi';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import PreviewIcon from '@mui/icons-material/Preview';
+import EditIcon from '@mui/icons-material/Edit';
 class ChildList extends Component {
   constructor() {
     super();
@@ -76,22 +78,25 @@ class ChildList extends Component {
           })
           .map((child) => {
             return (
-              <div key={child._id}>
-                {child.name}
-                <button>
-                  <a href={'/child/' + child._id}>View Profile</a>
+              <div className="childName" key={child._id}>
+                <h3>{child.name}</h3>
+                <button style={{ width: '40px' }}>
+                  <a href={'/child/' + child._id}>
+                    <PreviewIcon />
+                  </a>
                 </button>
-                <button>
+                <button style={{ width: '40px' }}>
                   <a href={'/child/' + child._id + '/edit/'}>
-                    Edit Child Profile
+                    <EditIcon />
                   </a>
                 </button>
                 <button
+                  style={{ width: '40px' }}
                   onClick={(event) =>
                     this.removeSelectedChild(event, child._id)
                   }
                 >
-                  Remove Child
+                  <DeleteIcon />
                 </button>
               </div>
             );

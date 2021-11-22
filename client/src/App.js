@@ -18,7 +18,7 @@ import ParentDashboard from './views/ParentDashboard';
 import MessageBoard from './views/message/MessageBoard';
 
 import SingleMessage from './views/message/SingleMessage';
-import HomeIcon from '@mui/icons-material/Home';
+
 import SingleUserMessage from './views/message/SingleUserMessage';
 import HomePage from './HomePage';
 import PrivateRoute from './PrivateRoute';
@@ -69,36 +69,42 @@ class App extends Component {
     console.log(this.state.user);
     return (
       <div className="App">
-        <nav>
+        <div className="nav-div">
           <Link to="/">
-            <HomeIcon style={{ fontSize: '48px' }} />
+            <p>
+              <h1>The Kindergarden App</h1>
+            </p>
           </Link>
-        </nav>
-        {(this.state.user &&
-          this.state.active &&
-          ((this.state.user.role === 'teacher' && (
-            <>
-              <TeacherDashboard
-                user={this.state.user}
-                onClick={this.handleSignOut}
-              />
-            </>
-          )) || (
-            <>
-              <ParentDashboard
-                user={this.state.user}
-                onClick={this.handleSignOut}
-              />
-            </>
-          ))) || (
-          <>
-            <div className="div-access">
-              <Link to="/sign-up">Teacher</Link>
-              <Link to="/parent/sign-up">Parent</Link>
-            </div>
-          </>
-        )}
 
+          {(this.state.user &&
+            this.state.active &&
+            ((this.state.user.role === 'teacher' && (
+              <>
+                <TeacherDashboard
+                  user={this.state.user}
+                  onClick={this.handleSignOut}
+                />
+              </>
+            )) || (
+              <>
+                <ParentDashboard
+                  user={this.state.user}
+                  onClick={this.handleSignOut}
+                />
+              </>
+            ))) || (
+            <>
+              <div className="div-access">
+                <Link to="/sign-up">
+                  <h2>Teacher</h2>
+                </Link>
+                <Link to="/parent/sign-up">
+                  <h2>Parent</h2>
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
         <Switch>
           <Route
             path="/sign-up"
