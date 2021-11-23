@@ -96,13 +96,13 @@ class App extends Component {
             <>
               <div className="div-access">
                 <Link to="/sign-up">
-                  <h2>Teacher</h2>
+                  <h3>Teacher</h3>
                 </Link>
                 <Link to="/parent/sign-up">
-                  <h2>Parent</h2>
+                  <h3>Parent</h3>
                 </Link>
                 <Link to="/sign-in">
-                  <h2>Log In</h2>
+                  <h3>Log In</h3>
                 </Link>
               </div>
             </>

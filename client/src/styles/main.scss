@@ -26,7 +26,13 @@ a {
   display: flex;
   column-gap: 50px;
 }
-.App {
+.Homepage {
+  background-image: url('/background.jpg');
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
+  width: 1500px;
+  height: 1000px;
+  background-position: top 50px left 250px;
 }
 .signIn-div,
 .teacherSignUp-div,

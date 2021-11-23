@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InteractingUsers from './InteractingUsers';
+
 import UserSearch from './UserSearch';
 
 export class MessageBoard extends Component {
