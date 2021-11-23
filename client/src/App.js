@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Route, Switch, Link } from 'react-router-dom';
 import { Component } from 'react';
 import TeacherSignUp from './TeacherSignUp';
@@ -26,6 +26,8 @@ import { signOut, loadAuthenticatedUser } from './services/authapi';
 import UserSearch from './views/message/UserSearch';
 import InteractingUsers from './views/message/InteractingUsers';
 import UserMessages from './views/message/UserMessages';
+import { red } from '@mui/material/colors';
+import ChildrenBackground from './styles/images/ChildrenBackground.png';
 
 class App extends Component {
   constructor() {
