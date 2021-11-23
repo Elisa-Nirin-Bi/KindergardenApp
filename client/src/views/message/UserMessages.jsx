@@ -33,21 +33,29 @@ export class UserMessages extends Component {
     return (
       <div>
         <div className="userMessages">
-          <ul>
+          <ul style={{ display: 'flex', flexDirection: 'column' }}>
             {this.state.messages.map((message) => {
               if (
                 this.props.match.params.id === message.receiver._id &&
                 message.sender._id === this.props.user._id
               ) {
                 return (
-                  <li style={{ paddingTop: '50' }} key={message.id}>
+                  <li
+                    style={{
+                      paddingTop: '50',
+                      backgroundColor: '#61dafb'
+                    }}
+                    key={message.id}
+                  >
                     {message.textBody}
-                    <p>
-                      <h5>by {message.sender.name}</h5>
+
+                    <h5>
+                      by {message.sender.name}
+                      <br></br>
                       <Moment format="YYYY-MM-DD HH:mm">
                         {message.creationDate}
                       </Moment>
-                    </p>
+                    </h5>
                   </li>
                 );
               } else if (
@@ -55,14 +63,22 @@ export class UserMessages extends Component {
                 message.receiver._id === this.props.user._id
               ) {
                 return (
-                  <li style={{ paddingTop: '50' }} key={message.id}>
+                  <li
+                    style={{
+                      paddingTop: '50',
+                      backgroundColor: '#E3F2A9'
+                    }}
+                    key={message.id}
+                  >
                     {message.textBody}
-                    <p>
-                      <h5>by {message.sender.name}</h5>
+
+                    <h5>
+                      by {message.sender.name}
+                      <br></br>
                       <Moment format="YYYY-MM-DD HH:mm">
                         {message.creationDate}
                       </Moment>
-                    </p>
+                    </h5>
                   </li>
                 );
               }

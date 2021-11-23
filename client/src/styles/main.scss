@@ -27,13 +27,7 @@ a {
   display: flex;
   column-gap: 50px;
 }
-.Homepage {
-  background-image: url('/background.jpg');
-  background-size: 80% 80%;
-  background-repeat: no-repeat;
-  width: 1500px;
-  height: 1000px;
-  background-position: top 50px left 250px;
+.App {
 }
 .signIn-div,
 .teacherSignUp-div,
@@ -94,23 +88,33 @@ input {
 }
 
 .userMessages {
-  border: 1pc pink solid;
-  width: 700px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgb(194, 191, 191);
-  height: 90%;
-  box-shadow: 0 0 2em #aee5ef;
-  margin: 50px auto auto auto;
-  width: 700px;
-  border-radius: 20px;
-}
-.userMessages > ul {
   list-style-type: none;
+
+  border-radius: 20px;
+  width: 800px;
+  margin: auto;
+}
+
+.userMessages > ul > li {
+  list-style-type: none;
+
+  border-radius: 20px;
+  width: 450px;
+  margin: 5px auto auto auto;
+  padding-top: 10px;
 }
 .singleUserMessage {
+  width: 400px;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+input {
+  height: 48px;
+  width: 300px;
+  margin: auto;
+}
+button {
+  height: 40px;
+  width: 70px;
 }
