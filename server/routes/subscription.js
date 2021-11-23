@@ -36,6 +36,8 @@ router.post('/', (req, res, next) => {
     })
     .then((subscription) => {
       res.json({ subscription });
+      console.log('subscription created:');
+      console.log(subscription);
     })
     .catch((error) => {
       next(error);
