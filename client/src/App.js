@@ -27,7 +27,6 @@ import UserSearch from './views/message/UserSearch';
 import InteractingUsers from './views/message/InteractingUsers';
 import UserMessages from './views/message/UserMessages';
 import { red } from '@mui/material/colors';
-import ChildrenBackground from './styles/images/ChildrenBackground.png';
 
 class App extends Component {
   constructor() {
@@ -69,6 +68,11 @@ class App extends Component {
   render() {
     console.log('this.state.user');
     console.log(this.state.user);
+    console.log('!this.state.loaded');
+    console.log(!this.state.loaded);
+    console.log('(this.state.user && this.state.user.role === parent)');
+    console.log(this.state.user && this.state.user.role === 'parent');
+
     return (
       <div className="App">
         <div className="nav-div">
@@ -267,10 +271,9 @@ class App extends Component {
           />
           <PrivateRoute
             path="/subscription"
-            redirect="/sign-up"
             authorized={
-              !this.state.loaded ||
-              (this.state.user && this.state.user.role === 'viewer')
+              !this.state.active ||
+              (this.state.user && this.state.user.role === 'parent')
             }
             render={(props) => (
               <SubscriptionView {...props} onUserRefresh={this.loadUser} />

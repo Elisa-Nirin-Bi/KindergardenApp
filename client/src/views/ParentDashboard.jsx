@@ -13,6 +13,7 @@ const ParentDashboard = (props) => {
       <span>Welcome parent {props.user.name},</span>
 
       <button onClick={props.onClick}>Sign Out</button>
+      <a href={'/subscription'}>Subscription</a>
       <button>
         <a href={'/parent/' + props.user._id + '/edit'}>Edit Profile</a>
       </button>
