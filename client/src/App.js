@@ -27,13 +27,15 @@ import UserSearch from './views/message/UserSearch';
 import InteractingUsers from './views/message/InteractingUsers';
 import UserMessages from './views/message/UserMessages';
 import { red } from '@mui/material/colors';
+import { loadSubscription } from './services/subscription';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      active: false
+      active: false,
+      subscription: null
     };
   }
 
@@ -47,6 +49,25 @@ class App extends Component {
         if (user) {
           this.setState({ user });
         }
+      })
+      .then(() => {
+        console.log('this.state.user inside loaduser');
+        console.log(this.state.user);
+        console.log(this.state.user._id);
+        loadSubscription(this.state.user._id)
+          .then((response) => {
+            console.log('response from loadingSubscription');
+            console.log(response);
+            if (response !== null) {
+              console.log('response.active');
+              console.log(response.active);
+              this.setState({ subscription: response.active });
+            }
+          })
+          .catch((error) => {
+            alert('error loadinng subscription status');
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -68,10 +89,6 @@ class App extends Component {
   render() {
     console.log('this.state.user');
     console.log(this.state.user);
-    console.log('!this.state.loaded');
-    console.log(!this.state.loaded);
-    console.log('(this.state.user && this.state.user.role === parent)');
-    console.log(this.state.user && this.state.user.role === 'parent');
 
     return (
       <div className="App">
@@ -165,7 +182,9 @@ class App extends Component {
             component={
               this.state.user && this.state.user.role === 'teacher'
                 ? ChildList
-                : this.state.user && this.state.user.role === 'parent'
+                : this.state.user &&
+                  this.state.user.role === 'parent' &&
+                  this.state.subscription === true
                 ? (props) => <ChildParents user={this.state.user} />
                 : HomePage
             }
