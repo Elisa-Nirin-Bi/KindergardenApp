@@ -109,12 +109,12 @@ input {
   flex-direction: row;
   align-items: center;
 }
-input {
+.singleUserMessage > input {
   height: 48px;
   width: 300px;
   margin: auto;
 }
-button {
+.singleUserMessage > button {
   height: 40px;
   width: 70px;
 }
