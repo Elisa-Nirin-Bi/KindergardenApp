@@ -7,6 +7,7 @@ body {
   font-family: 'Titillium Web', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  //   background-image: url('./images/ChildrenBackground.png') repeat 0 0;
 }
 
 a {
@@ -18,7 +19,7 @@ a {
   }
 }
 .nav-div {
-  background-color: #aee5ef;
+  //   background-color: #ecb27b;
   display: flex;
   justify-content: space-around;
 }
@@ -63,7 +64,7 @@ input {
 .childName {
   height: 170px;
   width: 300px;
-  background-color: #aee5ef;
+  //   background-color: #aee5ef;
   margin: auto;
 }
 
@@ -71,7 +72,7 @@ input {
   margin-bottom: 30px;
   height: 120px;
   width: 300px;
-  background-color: #aee5ef;
+  //   background-color: #aee5ef;
 }
 
 .childName > h3 {

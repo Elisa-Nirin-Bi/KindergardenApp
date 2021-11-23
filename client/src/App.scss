@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url(./styles/images/ChildrenBackground.png);
+  background-size: 100%;
+  opacity: 0.5;
 }
 
 .App-logo {
@@ -14,7 +17,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
