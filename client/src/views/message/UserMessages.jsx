@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { getMessages } from '../../services/messageapi';
+import { getMessages, removeMessageById } from '../../services/messageapi';
+
 import SingleUserMessage from './SingleUserMessage';
 import Moment from 'react-moment';
 export class UserMessages extends Component {
@@ -28,6 +29,18 @@ export class UserMessages extends Component {
         });
     }, 5 * 1000);
   }
+  removeMessage = (e, msgId) => {
+    e.preventDefault();
+    const thisMsgId = msgId;
+    removeMessageById(thisMsgId)
+      .then(() => {
+        console.log(msgId);
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -56,6 +69,14 @@ export class UserMessages extends Component {
                         {message.creationDate}
                       </Moment>
                     </h5>
+                    <button
+                      style={{ width: '60px' }}
+                      onClick={(event) =>
+                        this.removeMessage(event, this.props.match.params.id)
+                      }
+                    >
+                      Delete
+                    </button>
                   </li>
                 );
               } else if (
@@ -79,6 +100,12 @@ export class UserMessages extends Component {
                         {message.creationDate}
                       </Moment>
                     </h5>
+                    <button
+                      style={{ width: '60px' }}
+                      onClick={(e) => this.removeMessage(e, message.id)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 );
               }

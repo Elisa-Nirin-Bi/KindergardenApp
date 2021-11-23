@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { getAllMessages } from '../../services/messageapi';
 import { Link } from 'react-router-dom';
 import { SpeechBubble } from 'react-kawaii';
-import UserMessages from './UserMessages';
 
 export class InteractingUsers extends Component {
   constructor(props) {
     super(props);
     this.state = {
       conversations: [],
-      count: 0
+      count: ''
     };
   }
-
   componentDidMount() {
     getAllMessages()
       .then((messages) => {

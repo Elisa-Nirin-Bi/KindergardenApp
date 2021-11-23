@@ -19,3 +19,13 @@ export const getMessages = (receiverId) =>
 
 export const getAllMessages = () =>
   api.get('/message/all').then((response) => response.data);
+
+export const editMessage = (receiverId, data) => {
+  return api
+    .patch(`/user/edit/${receiverId}`, data)
+    .then((response) => response.data);
+};
+
+export const removeMessageById = (messageId) => {
+  return api.delete(`/message/user/delete/${messageId}`);
+};
