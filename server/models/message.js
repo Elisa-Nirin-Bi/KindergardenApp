@@ -17,6 +17,9 @@ const schema = new mongoose.Schema(
     receiver: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
+    },
+    senderRead: {
+      type: Boolean
     }
   },
   {

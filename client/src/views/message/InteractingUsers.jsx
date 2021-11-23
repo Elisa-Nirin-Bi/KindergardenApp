@@ -42,7 +42,7 @@ export class InteractingUsers extends Component {
             <li className="interactingUsers-li" key={user._id}>
               <Link to={`/message/user/${user._id}`}>
                 {user.name}
-                <SpeechBubble size={40} mood="happy" color="#aee5ef" />
+                <SpeechBubble size={40} mood="happy" color="#fffaf0" />
               </Link>
               {this.state.count}
             </li>
