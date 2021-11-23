@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { getAllMessages } from '../../services/messageapi';
 import { Link } from 'react-router-dom';
 import { SpeechBubble } from 'react-kawaii';
+import UserMessages from './UserMessages';
 
 export class InteractingUsers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      conversations: []
+      conversations: [],
+      count: 0
     };
   }
 
@@ -26,7 +28,7 @@ export class InteractingUsers extends Component {
             );
           });
         this.setState(() => {
-          return { conversations };
+          return { conversations, count: conversations.length };
         });
       })
       .catch((error) => {
@@ -41,9 +43,10 @@ export class InteractingUsers extends Component {
           {this.state.conversations.map((user) => (
             <li className="interactingUsers-li" key={user._id}>
               <Link to={`/message/user/${user._id}`}>
-                {user.name}{' '}
+                {user.name}
                 <SpeechBubble size={40} mood="happy" color="#aee5ef" />
               </Link>
+              {this.state.count}
             </li>
           ))}
         </ul>
