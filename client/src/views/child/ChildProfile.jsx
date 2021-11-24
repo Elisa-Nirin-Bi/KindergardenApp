@@ -10,6 +10,8 @@ import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import Profile from '../../styles/images/profile.png';
 import ArchiveIcon from '@mui/icons-material/Archive';
+import EmailIcon from '@mui/icons-material/Email';
+
 class ChildProfile extends Component {
   constructor() {
     super();
@@ -19,6 +21,7 @@ class ChildProfile extends Component {
       address: null,
       emergencyContactNumber: null,
       parent: null,
+      parentId: null,
       notifications: null
     };
   }
@@ -26,20 +29,20 @@ class ChildProfile extends Component {
   componentDidMount() {
     getChild(this.props.match.params.id)
       .then((childinfo) => {
+        console.log(this.props.user._id);
         const childToShow = childinfo.child;
-        console.log('childToShow');
-        console.log(childToShow);
+
         this.setState(() => {
           return {
             id: childToShow._id,
             name: childToShow.name,
             address: childToShow.address,
             emergencyContactNumber: childToShow.emergencyContactNumber,
-            parent: childToShow.parent.name
+            parent: childToShow.parent.name,
+            parentId: childToShow.parent._id
           };
         });
-        console.log('this.stateInsideComponent');
-        console.log(this.state);
+
         service
           .getAllNotifications(childToShow._id)
           .then((response) => {
@@ -57,20 +60,27 @@ class ChildProfile extends Component {
   }
 
   render() {
-    console.log('this.state');
-    console.log(this.state);
     return this.state.id ? (
       <div>
         <div className="mainProfile">
-          <p>
-            <h2>
-              {this.state.name}
+          <h2>{this.state.name}</h2>
 
+          {(this.props.user.role === 'teacher' && (
+            <>
               <a href={`/child/${this.state.id}/upload`}>
                 <ArchiveIcon />
               </a>
-            </h2>
-          </p>
+              <Link to={`/message/user/${this.state.parentId}`}>
+                <EmailIcon />
+              </Link>
+            </>
+          )) || (
+            <>
+              <Link to={`/message/user/${this.state.parentId}`}>
+                <EmailIcon />
+              </Link>
+            </>
+          )}
           <div className="profile">
             <div className="imgProfile">
               <img src={Profile} alt="child" />
@@ -100,18 +110,13 @@ class ChildProfile extends Component {
             {this.state.notifications
               ? this.state.notifications
                   .filter((notification) => {
-                    console.log('notification');
-                    console.log(notification);
                     let currentChild = this.state.id;
-                    console.log('currentChild');
-                    console.log(currentChild);
+
                     if (notification.childProfile === currentChild) {
                       return notification;
                     }
                   })
                   .map((data) => {
-                    console.log('data.image');
-                    console.log(data.imageUrl);
                     return (
                       <div key={Math.random()}>
                         <p>

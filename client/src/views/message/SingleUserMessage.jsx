@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createUserMessage } from '../../services/messageapi';
+import EmailIcon from '@mui/icons-material/Email';
 
 export class SingleUserMessage extends Component {
   constructor(props) {
@@ -49,14 +50,16 @@ export class SingleUserMessage extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="singleUserMessage-div">
           <form className="singleUserMessage">
             <input
               onChange={this.handleInputChange}
               name="textBody"
               value={this.state.textBody}
             ></input>
-            <button onClick={this.handleFormSubmission}>Submit</button>
+            <button onClick={this.handleFormSubmission}>
+              <EmailIcon />
+            </button>
           </form>
         </div>
       </div>

@@ -37,6 +37,7 @@ export class InteractingUsers extends Component {
   render() {
     return (
       <div className="interactingUsers">
+        <h3>Active conversations {this.state.count}</h3>
         <ul>
           {this.state.conversations.map((user) => (
             <li className="interactingUsers-li" key={user._id}>
@@ -44,7 +45,6 @@ export class InteractingUsers extends Component {
                 {user.name}
                 <SpeechBubble size={40} mood="happy" color="#fffaf0" />
               </Link>
-              {this.state.count}
             </li>
           ))}
         </ul>

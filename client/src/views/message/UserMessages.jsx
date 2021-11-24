@@ -69,14 +69,6 @@ export class UserMessages extends Component {
                         {message.creationDate}
                       </Moment>
                     </h5>
-                    <button
-                      style={{ width: '60px' }}
-                      onClick={(event) =>
-                        this.removeMessage(event, this.props.match.params.id)
-                      }
-                    >
-                      Delete
-                    </button>
                   </li>
                 );
               } else if (
@@ -100,12 +92,6 @@ export class UserMessages extends Component {
                         {message.creationDate}
                       </Moment>
                     </h5>
-                    <button
-                      style={{ width: '60px' }}
-                      onClick={(e) => this.removeMessage(e, message.id)}
-                    >
-                      Delete
-                    </button>
                   </li>
                 );
               }
