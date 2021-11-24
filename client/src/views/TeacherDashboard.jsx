@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import EditIcon from '@mui/icons-material/Edit';
+import HomeIcon from '@mui/icons-material/Home';
 
 const TeacherDashboard = (props) => {
   console.log('props4');
@@ -12,9 +16,20 @@ const TeacherDashboard = (props) => {
         {(props.user && (
           <>
             <span>Welcome teacher {props.user.name}, </span>
-            <a href={'/' + props.user._id + '/edit'}> Edit Profile </a>
-            <a href="/message/list"> Messages </a>
-            <button onClick={props.onClick}> Sign Out</button>
+            <Link to="/">
+              <HomeIcon />
+            </Link>
+            <a href={'/' + props.user._id + '/edit'}>
+              {' '}
+              <EditIcon />{' '}
+            </a>
+            <a href="/message/list">
+              {' '}
+              <ChatBubbleIcon />{' '}
+            </a>
+            <em onClick={props.onClick}>
+              <LogoutIcon />
+            </em>
           </>
         )) || (
           <>

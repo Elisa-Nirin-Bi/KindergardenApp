@@ -10,7 +10,7 @@ import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import Profile from '../../styles/images/profile.png';
 import ArchiveIcon from '@mui/icons-material/Archive';
-import EmailIcon from '@mui/icons-material/Email';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
 class ChildProfile extends Component {
   constructor() {
@@ -71,13 +71,13 @@ class ChildProfile extends Component {
                 <ArchiveIcon />
               </a>
               <Link to={`/message/user/${this.state.parentId}`}>
-                <EmailIcon />
+                <ChatBubbleIcon />
               </Link>
             </>
           )) || (
             <>
               <Link to={`/message/user/${this.state.parentId}`}>
-                <EmailIcon />
+                <ChatBubbleIcon />
               </Link>
             </>
           )}
