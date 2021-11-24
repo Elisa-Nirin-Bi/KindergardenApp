@@ -135,3 +135,36 @@ input {
   width: 300px;
   margin: 20px auto auto auto;
 }
+
+.childProfile-div {
+  background-color: #f0f8ff;
+  width: 500px;
+  margin: auto;
+}
+.imgProfile > img {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  opacity: 5;
+  padding-bottom: 10px;
+}
+
+.profile {
+  line-height: 1;
+  opacity: 5;
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+.mainProfile {
+  margin: auto;
+  width: 350px;
+  background-color: #bfdc50;
+}
+
+.mainProfile {
+  padding-top: 5px;
+}
+.detailsProfile {
+  text-align: left;
+}

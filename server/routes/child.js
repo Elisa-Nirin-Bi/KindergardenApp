@@ -98,7 +98,6 @@ router.get('/:id/allnotification', (req, res, next) => {
 
 router.post(
   '/:id/upload',
-  routeGuard,
   fileUploader.single('imageUrl'),
   (req, res, next) => {
     console.log(req.file);
@@ -112,7 +111,7 @@ router.post(
   }
 );
 
-router.post('/:id/create-notification', routeGuard, (req, res, next) => {
+router.post('/:id/create-notification', (req, res, next) => {
   const childProfile = req.params.id;
   const { message, imageUrl } = req.body;
   Notification.create({ message, imageUrl, childProfile })
