@@ -83,7 +83,7 @@ class App extends Component {
 
   handleSignOut = () => {
     signOut().then(() => {
-      this.setState({ user: null });
+      this.setState({ user: null, active: null, subscription: null });
     });
   };
   render() {

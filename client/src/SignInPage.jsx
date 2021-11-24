@@ -25,6 +25,7 @@ class SignInPage extends Component {
       const user = await signIn({ email, password });
       this.props.onAuthenticationChange(user);
       this.props.history.push('/');
+      window.location.reload(false);
     } catch (error) {
       alert('There was an error signing in');
       console.log(error);
