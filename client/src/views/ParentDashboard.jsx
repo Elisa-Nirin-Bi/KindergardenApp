@@ -1,6 +1,12 @@
 import React from 'react';
 import Subscription from './Subscription';
 import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import EditIcon from '@mui/icons-material/Edit';
+import HomeIcon from '@mui/icons-material/Home';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
 
 const ParentDashboard = (props) => {
   console.log('props5');
@@ -11,17 +17,31 @@ const ParentDashboard = (props) => {
   return (
     <div>
       <span>Welcome parent {props.user.name},</span>
+      <Link to="/">
+        <HomeIcon />
+      </Link>
 
-      <button onClick={props.onClick}>Sign Out</button>
-      <a href={'/subscription'}>Subscription</a>
-      <button>
-        <a href={'/parent/' + props.user._id + '/edit'}>Edit Profile</a>
-      </button>
-      <button>
-        <a href={'/child/create'}>Create Child</a>
-      </button>
+      <a href={'/subscription'}>
+        <CardMembershipIcon />
+      </a>
+
+      <a href={'/parent/' + props.user._id + '/edit'}>
+        {' '}
+        <EditIcon />
+      </a>
+
+      <a href={'/child/create'}>
+        <ChildCareIcon />
+      </a>
+
       {/* <a href={'/message/list/' + props.user._id}>Messages</a> */}
-      <a href="/message/list">Messages</a>
+      <a href="/message/list">
+        {' '}
+        <ChatBubbleIcon />{' '}
+      </a>
+      <button onClick={props.onClick}>
+        <LogoutIcon />
+      </button>
     </div>
   );
 };
