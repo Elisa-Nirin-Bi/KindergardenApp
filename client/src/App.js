@@ -26,7 +26,7 @@ import { signOut, loadAuthenticatedUser } from './services/authapi';
 import UserSearch from './views/message/UserSearch';
 import InteractingUsers from './views/message/InteractingUsers';
 import UserMessages from './views/message/UserMessages';
-import { red } from '@mui/material/colors';
+// import { red } from '@mui/material/colors';
 import { loadSubscription } from './services/subscription';
 
 class App extends Component {
@@ -83,20 +83,22 @@ class App extends Component {
 
   handleSignOut = () => {
     signOut().then(() => {
-      this.setState({ user: null, active: null, subscription: null });
+      this.setState({ user: null, subscription: null });
     });
   };
   render() {
     console.log('this.state.user');
     console.log(this.state.user);
+    console.log('this.props');
+    console.log(this.props);
 
     return (
       <div className="App">
         <div className="nav-div">
           <Link to="/">
-            <p>
+            <div>
               <h1>The Kindergarden App</h1>
-            </p>
+            </div>
           </Link>
 
           {(this.state.user &&
@@ -174,6 +176,7 @@ class App extends Component {
               render={(props) => (
                 <SignInPage
                   {...props}
+                  onClick={this.handleSignOut}
                   onAuthenticationChange={this.handleAuthenticationChange}
                 />
               )}
@@ -186,7 +189,13 @@ class App extends Component {
                   : this.state.user &&
                     this.state.user.role === 'parent' &&
                     this.state.subscription === true
-                  ? (props) => <ChildParents user={this.state.user} />
+                  ? (props) => (
+                      <ChildParents
+                        user={this.state.user}
+                        onClick={this.handleSignOut}
+                        {...props}
+                      />
+                    )
                   : HomePage
               }
               onAuthenticationChange={this.handleAuthenticationChange}
@@ -197,6 +206,8 @@ class App extends Component {
               render={(props) => (
                 <CreateNotification
                   {...props}
+                  user={this.state.user}
+                  onClick={this.handleSignOut}
                   onAuthenticationChange={this.handleAuthenticationChange}
                 />
               )}
@@ -206,6 +217,8 @@ class App extends Component {
               render={(props) => (
                 <CreateNotification
                   {...props}
+                  user={this.state.user}
+                  onClick={this.handleSignOut}
                   onAuthenticationChange={this.handleAuthenticationChange}
                 />
               )}
@@ -217,7 +230,11 @@ class App extends Component {
                 (this.state.user && this.state.user.role === 'parent')
               }
               render={(props) => (
-                <ChildCreate user={this.state.user} {...props} />
+                <ChildCreate
+                  user={this.state.user}
+                  onClick={this.handleSignOut}
+                  {...props}
+                />
               )}
               exact
             />
@@ -227,14 +244,24 @@ class App extends Component {
                 !this.state.active ||
                 (this.state.user && this.state.user.role === 'teacher')
               }
-              component={ChildList}
+              render={(props) => (
+                <ChildList
+                  {...props}
+                  onClick={this.handleSignOut}
+                  user={this.state.user}
+                />
+              )}
               exact
             />
             <PrivateRoute
               path="/message/list"
               authorized={!this.state.active || this.state.user}
               render={(props) => (
-                <MessageBoard {...props} user={this.state.user} />
+                <MessageBoard
+                  {...props}
+                  onClick={this.handleSignOut}
+                  user={this.state.user}
+                />
               )}
               exact
             />

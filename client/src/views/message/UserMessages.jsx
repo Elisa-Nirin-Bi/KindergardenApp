@@ -43,6 +43,8 @@ export class UserMessages extends Component {
   };
 
   render() {
+    console.log('this.propsINSIDEMESSAGES');
+    console.log(this.props);
     return (
       <div>
         <div className="userMessages">

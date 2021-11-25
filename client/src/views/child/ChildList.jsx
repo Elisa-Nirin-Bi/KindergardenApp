@@ -52,6 +52,9 @@ class ChildList extends Component {
   };
 
   render() {
+    console.log('this.props');
+    console.log(this.props);
+
     return (
       <div>
         <h2>Child List</h2>

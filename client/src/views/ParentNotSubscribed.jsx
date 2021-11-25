@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
-import Subscription from './Subscription';
+// import Subscription from './Subscription';
 import { Link } from 'react-router-dom';
-import ChildParents from './child/ChildParents';
-import { loadSubscription } from '../services/subscription';
+// import ChildParents from './child/ChildParents';
+// import { loadSubscription } from '../services/subscription';
 
 class ParentNotSubscribed extends Component {
   constructor(props) {
@@ -11,27 +11,6 @@ class ParentNotSubscribed extends Component {
     this.state = {
       user: props.user
     };
-  }
-
-  theCalling = () => {
-    console.log('TIMEOUT CALLED');
-    this.props.history.push('/');
-    console.log('this.props after TIMEOUT');
-    console.log(this.props);
-  };
-
-  componentDidMount() {
-    // window.location.reload(false);
-    setTimeout(() => this.theCalling(), 3000);
-    this.props.history.push('/');
-  }
-
-  componentDidUpdate(previousProps) {
-    if (previousProps !== this.props) {
-      console.log('There are difference');
-      console.log('this.props');
-      console.log(this.props);
-    }
   }
 
   render() {
