@@ -27,9 +27,9 @@ const TeacherDashboard = (props) => {
               {' '}
               <ChatBubbleIcon />{' '}
             </a>
-            <em onClick={props.onClick}>
+            <button onClick={props.onClick}>
               <LogoutIcon />
-            </em>
+            </button>
           </>
         )) || (
           <>

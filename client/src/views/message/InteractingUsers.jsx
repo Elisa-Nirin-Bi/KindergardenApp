@@ -16,6 +16,7 @@ export class InteractingUsers extends Component {
       .then((messages) => {
         const conversations = messages
           .map((message) => {
+            console.log(message.sender._id);
             return message.receiver._id === this.props.user._id
               ? message.sender
               : message.receiver;
@@ -37,7 +38,6 @@ export class InteractingUsers extends Component {
   render() {
     return (
       <div className="interactingUsers">
-        <h3>Active conversations {this.state.count}</h3>
         <ul>
           {this.state.conversations.map((user) => (
             <li className="interactingUsers-li" key={user._id}>
@@ -45,6 +45,7 @@ export class InteractingUsers extends Component {
                 {user.name}
                 <SpeechBubble size={40} mood="happy" color="#fffaf0" />
               </Link>
+              {this.state.count}
             </li>
           ))}
         </ul>
