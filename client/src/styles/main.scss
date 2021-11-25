@@ -14,10 +14,13 @@ body {
   //   background-image: url('./images/ChildrenBackground.png') repeat 0 0;
 }
 .App {
-  //   width: 1700px;
-  //   height: 1000px;
-  opacity: 1;
+  background-image: url('./images/Sun.png');
+  width: 1700px;
+  height: 1700px;
+  opacity: 0.7;
+  background-repeat: repeat-y;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -26,26 +29,25 @@ a {
     color: initial;
   }
 }
+
+.bottomPart {
+  //background-color: whitesmoke;
+  //padding-bottom: 100%;
+  //padding-top: 50px;
+}
 .nav-div {
-  background-image: url('/styles/images/ChildrenBackground.png');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  //   background-color: #ecb27b;
+  //background-image: url('/styles/images/LastBackground.png');
+  //background-size: 100%;
+  //background-repeat: no-repeat;
+  //background-position: 50%;
+  //opacity: 1;
   display: flex;
   justify-content: space-around;
-  color: rgb(1, 82, 1);
-  opacity: 1;
+  //color: rgb(1, 82, 1);
 }
 .div-access {
   display: flex;
   column-gap: 50px;
-}
-
-.bottomPart {
-  background-color: #92bfc79d;
-  padding-bottom: 100%;
-  padding-top: 50px;
 }
 
 .signIn-div,
