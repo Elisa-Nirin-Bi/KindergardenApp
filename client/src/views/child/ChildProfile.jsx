@@ -60,6 +60,8 @@ class ChildProfile extends Component {
   }
 
   render() {
+    console.log('this.propsCHILDPROFILE');
+    console.log(this.props);
     return this.state.id ? (
       <div>
         <div className="mainProfile">
