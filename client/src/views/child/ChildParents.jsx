@@ -69,27 +69,29 @@ class ChildParents extends Component {
           })
           .map((child) => {
             return (
-              <div key={child._id}>
-                {child.name}
-                <button style={{ width: '40px' }}>
-                  <a href={'/child/' + child._id}>
-                    {' '}
-                    <PreviewIcon />
-                  </a>
-                </button>
-                <button style={{ width: '40px' }}>
-                  <a href={'/child/' + child._id + '/edit/'}>
-                    <EditIcon />
-                  </a>
-                </button>
-                <button
-                  style={{ width: '40px' }}
-                  onClick={(event) =>
-                    this.removeSelectedChild(event, child._id)
-                  }
-                >
-                  <DeleteIcon />
-                </button>
+              <div className="childParents" key={child._id}>
+                <div className="childListNames">{child.name}</div>
+                <div className="childButtons">
+                  <button style={{ width: '40px' }}>
+                    <a href={'/child/' + child._id}>
+                      {' '}
+                      <PreviewIcon />
+                    </a>
+                  </button>
+                  <button style={{ width: '40px' }}>
+                    <a href={'/child/' + child._id + '/edit/'}>
+                      <EditIcon />
+                    </a>
+                  </button>
+                  <button
+                    style={{ width: '40px' }}
+                    onClick={(event) =>
+                      this.removeSelectedChild(event, child._id)
+                    }
+                  >
+                    <DeleteIcon />
+                  </button>
+                </div>
               </div>
             );
           })}

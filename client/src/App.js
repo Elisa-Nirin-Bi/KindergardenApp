@@ -131,174 +131,176 @@ class App extends Component {
             </>
           )}
         </div>
-        <Switch>
-          <Route
-            path="/sign-up"
-            render={(props) => (
-              <TeacherSignUp
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <Route
-            path="/:id/edit"
-            render={(props) => (
-              <TeacherUpdate
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <Route
-            path="/parent/:id/edit"
-            render={(props) => (
-              <ParentUpdate
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <Route
-            path="/parent/sign-up"
-            render={(props) => (
-              <ParentSignUp
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <Route
-            path="/sign-in"
-            render={(props) => (
-              <SignInPage
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <Route
-            path="/"
-            component={
-              this.state.user && this.state.user.role === 'teacher'
-                ? ChildList
-                : this.state.user &&
-                  this.state.user.role === 'parent' &&
-                  this.state.subscription === true
-                ? (props) => <ChildParents user={this.state.user} />
-                : HomePage
-            }
-            onAuthenticationChange={this.handleAuthenticationChange}
-            exact
-          />
-          <Route
-            path="/child/:id/upload"
-            render={(props) => (
-              <CreateNotification
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <Route
-            path="/child/:id/create-notification"
-            render={(props) => (
-              <CreateNotification
-                {...props}
-                onAuthenticationChange={this.handleAuthenticationChange}
-              />
-            )}
-          />
-          <PrivateRoute
-            path="/child/create"
-            authorized={
-              !this.state.active ||
-              (this.state.user && this.state.user.role === 'parent')
-            }
-            render={(props) => (
-              <ChildCreate user={this.state.user} {...props} />
-            )}
-            exact
-          />
-          <PrivateRoute
-            path="/child/list"
-            authorized={
-              !this.state.active ||
-              (this.state.user && this.state.user.role === 'teacher')
-            }
-            component={ChildList}
-            exact
-          />
-          <PrivateRoute
-            path="/message/list"
-            authorized={!this.state.active || this.state.user}
-            render={(props) => (
-              <MessageBoard {...props} user={this.state.user} />
-            )}
-            exact
-          />
-          <PrivateRoute
-            path="/message/list/:id"
-            authorized={!this.state.active || this.state.user}
-            render={(props) => (
-              <InteractingUsers user={this.state.user} {...props} />
-            )}
-          />
-          <PrivateRoute
-            path="/message/:id"
-            authorized={!this.state.active || this.state.user}
-            render={(props) => (
-              <SingleMessage user={this.state.user} {...props} />
-            )}
-            exact
-          />
+        <div className="bottomPart">
+          <Switch>
+            <Route
+              path="/sign-up"
+              render={(props) => (
+                <TeacherSignUp
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <Route
+              path="/:id/edit"
+              render={(props) => (
+                <TeacherUpdate
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <Route
+              path="/parent/:id/edit"
+              render={(props) => (
+                <ParentUpdate
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <Route
+              path="/parent/sign-up"
+              render={(props) => (
+                <ParentSignUp
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <Route
+              path="/sign-in"
+              render={(props) => (
+                <SignInPage
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <Route
+              path="/"
+              component={
+                this.state.user && this.state.user.role === 'teacher'
+                  ? ChildList
+                  : this.state.user &&
+                    this.state.user.role === 'parent' &&
+                    this.state.subscription === true
+                  ? (props) => <ChildParents user={this.state.user} />
+                  : HomePage
+              }
+              onAuthenticationChange={this.handleAuthenticationChange}
+              exact
+            />
+            <Route
+              path="/child/:id/upload"
+              render={(props) => (
+                <CreateNotification
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <Route
+              path="/child/:id/create-notification"
+              render={(props) => (
+                <CreateNotification
+                  {...props}
+                  onAuthenticationChange={this.handleAuthenticationChange}
+                />
+              )}
+            />
+            <PrivateRoute
+              path="/child/create"
+              authorized={
+                !this.state.active ||
+                (this.state.user && this.state.user.role === 'parent')
+              }
+              render={(props) => (
+                <ChildCreate user={this.state.user} {...props} />
+              )}
+              exact
+            />
+            <PrivateRoute
+              path="/child/list"
+              authorized={
+                !this.state.active ||
+                (this.state.user && this.state.user.role === 'teacher')
+              }
+              component={ChildList}
+              exact
+            />
+            <PrivateRoute
+              path="/message/list"
+              authorized={!this.state.active || this.state.user}
+              render={(props) => (
+                <MessageBoard {...props} user={this.state.user} />
+              )}
+              exact
+            />
+            <PrivateRoute
+              path="/message/list/:id"
+              authorized={!this.state.active || this.state.user}
+              render={(props) => (
+                <InteractingUsers user={this.state.user} {...props} />
+              )}
+            />
+            <PrivateRoute
+              path="/message/:id"
+              authorized={!this.state.active || this.state.user}
+              render={(props) => (
+                <SingleMessage user={this.state.user} {...props} />
+              )}
+              exact
+            />
 
-          <PrivateRoute
-            path="/message/user/:id"
-            authorized={!this.state.active || this.state.user}
-            render={(props) => (
-              <UserMessages user={this.state.user} {...props} />
-            )}
-          />
+            <PrivateRoute
+              path="/message/user/:id"
+              authorized={!this.state.active || this.state.user}
+              render={(props) => (
+                <UserMessages user={this.state.user} {...props} />
+              )}
+            />
 
-          <PrivateRoute
-            path="/message/user/create/:id"
-            authorized={!this.state.active || this.state.user}
-            render={(props) => (
-              <SingleUserMessage user={this.state.user} {...props} />
-            )}
-          />
+            <PrivateRoute
+              path="/message/user/create/:id"
+              authorized={!this.state.active || this.state.user}
+              render={(props) => (
+                <SingleUserMessage user={this.state.user} {...props} />
+              )}
+            />
 
-          <PrivateRoute
-            path="/users"
-            authorized={!this.state.active || this.state.user}
-            component={UserSearch}
-            exact
-          />
+            <PrivateRoute
+              path="/users"
+              authorized={!this.state.active || this.state.user}
+              component={UserSearch}
+              exact
+            />
 
-          <PrivateRoute
-            path="/child/:id/edit"
-            authorized={!this.state.active || this.state.user}
-            component={ChildEdit}
-          />
-          <PrivateRoute
-            path="/child/:id"
-            authorized={!this.state.active || this.state.user}
-            render={(props) => (
-              <ChildProfile user={this.state.user} {...props} />
-            )}
-          />
-          <PrivateRoute
-            path="/subscription"
-            authorized={
-              !this.state.active ||
-              (this.state.user && this.state.user.role === 'parent')
-            }
-            render={(props) => (
-              <SubscriptionView {...props} onUserRefresh={this.loadUser} />
-            )}
-          />
-        </Switch>
+            <PrivateRoute
+              path="/child/:id/edit"
+              authorized={!this.state.active || this.state.user}
+              component={ChildEdit}
+            />
+            <PrivateRoute
+              path="/child/:id"
+              authorized={!this.state.active || this.state.user}
+              render={(props) => (
+                <ChildProfile user={this.state.user} {...props} />
+              )}
+            />
+            <PrivateRoute
+              path="/subscription"
+              authorized={
+                !this.state.active ||
+                (this.state.user && this.state.user.role === 'parent')
+              }
+              render={(props) => (
+                <SubscriptionView {...props} onUserRefresh={this.loadUser} />
+              )}
+            />
+          </Switch>
+        </div>
       </div>
     );
   }
