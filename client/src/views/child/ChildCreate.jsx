@@ -8,7 +8,8 @@ class ChildCreate extends Component {
       name: '',
       address: '',
       emergencyContactNumber: '',
-      parent: ''
+      parent: '',
+      genre: ''
     };
   }
 
@@ -21,12 +22,9 @@ class ChildCreate extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    console.log('this.state');
-    console.log(this.state);
-    console.log('this.props in handleFormSubmission');
-    console.log(this.props);
-    const { name, address, emergencyContactNumber, parent } = this.state;
-    createChild({ name, address, emergencyContactNumber, parent })
+
+    const { name, address, emergencyContactNumber, genre, parent } = this.state;
+    createChild({ name, address, emergencyContactNumber, genre, parent })
       .then((user) => {
         this.props.history.push('/');
       })
@@ -55,14 +53,6 @@ class ChildCreate extends Component {
   }
 
   render() {
-    console.log('this.user');
-    console.log(this.user);
-    console.log('this.props');
-    console.log(this.props);
-    console.log('this.state.parent');
-    console.log(this.state.parent);
-    console.log('this.state');
-    console.log(this.state);
     return (
       <div>
         <h2>Child Here we know</h2>
@@ -75,6 +65,15 @@ class ChildCreate extends Component {
               placeholder="First and Last Name of the Child"
               name="name"
               value={this.state.name}
+              onChange={this.handleInputChange}
+            />
+            <label htmlFor="input-genre">Boy or Girl?</label>
+            <input
+              id="input-genre"
+              type="text"
+              placeholder="Boy or Girl?"
+              name="genre"
+              value={this.state.genre}
               onChange={this.handleInputChange}
             />
             <label htmlFor="input-address">Address</label>

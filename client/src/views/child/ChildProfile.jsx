@@ -8,9 +8,11 @@ import HomeIcon from '@mui/icons-material/Home';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import CampaignIcon from '@mui/icons-material/Campaign';
-import Profile from '../../styles/images/profile.png';
+import Profile from '../../styles/images/Girl.png';
+import BoyProfile from '../../styles/images/Boy.png';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import { getBottomNavigationActionUtilityClass } from '@mui/material';
 
 class ChildProfile extends Component {
   constructor() {
@@ -20,6 +22,7 @@ class ChildProfile extends Component {
       name: null,
       address: null,
       emergencyContactNumber: null,
+      genre: null,
       parent: null,
       parentId: null,
       notifications: null
@@ -36,6 +39,7 @@ class ChildProfile extends Component {
           return {
             id: childToShow._id,
             name: childToShow.name,
+            genre: childToShow.genre,
             address: childToShow.address,
             emergencyContactNumber: childToShow.emergencyContactNumber,
             parent: childToShow.parent.name,
@@ -60,8 +64,6 @@ class ChildProfile extends Component {
   }
 
   render() {
-    console.log('this.propsCHILDPROFILE');
-    console.log(this.props);
     return this.state.id ? (
       <div>
         <div className="mainProfile">
@@ -84,9 +86,19 @@ class ChildProfile extends Component {
             </>
           )}
           <div className="profile">
-            <div className="imgProfile">
-              <img src={Profile} alt="child" />
-            </div>
+            {(this.state.genre === 'girl' && (
+              <>
+                <div className="imgProfile">
+                  <img src={Profile} alt="child" />
+                </div>
+              </>
+            )) || (
+              <>
+                <div className="imgProfile">
+                  <img src={BoyProfile} alt="child" />
+                </div>
+              </>
+            )}
 
             <div className="detailsProfile">
               <h5>
@@ -96,14 +108,6 @@ class ChildProfile extends Component {
                 <br></br>
                 <FamilyRestroomIcon /> {this.state.parent}
               </h5>
-              {(this.props.user.role === 'teacher' && <></>) || <></>}
-              {(this.props.user.role === 'parent' && (
-                <>
-                  <Link to="/subscription">
-                    <p>Subscription</p>
-                  </Link>
-                </>
-              )) || <></>}
             </div>
           </div>
         </div>

@@ -93,6 +93,7 @@ h2 {
   //   background-color: #aee5ef;
   margin: auto auto auto auto;
   background-color: #bfdc50;
+  box-shadow: 0 0 2em #b3c083;
 }
 
 .interactingUsers > li {
@@ -152,12 +153,14 @@ h2 {
   padding-top: 10px;
   width: 300px;
   margin: 20px auto auto auto;
+  box-shadow: 0 0 2em #b3c083;
 }
 
 .childProfile-div {
-  background-color: #f0f8ff;
+  background-color: #d9f1ed;
   width: 500px;
   margin: auto;
+  box-shadow: 0 0 2em #b0d5cf;
 }
 .imgProfile > img {
   width: 120px;
@@ -203,7 +206,22 @@ h2 {
   width: 200px;
   margin-left: 24%;
 }
-
 .childButtons {
   margin-right: 30%;
+}
+.mainProfile {
+  margin-top: 100px;
+  box-shadow: 0 0 2em #b3c083;
+}
+.userSearch > input {
+  width: 200px;
+}
+
+.userSearch {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.interactingUsers > p {
+  font-size: 1.2em;
 }

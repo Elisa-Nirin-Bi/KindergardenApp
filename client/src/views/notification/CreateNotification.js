@@ -5,7 +5,8 @@ import service from '../../services/notificationapi';
 class CreateNotification extends Component {
   state = {
     message: '',
-    imageUrl: ''
+    imageUrl: '',
+    creator: ''
   };
 
   handleChange = (e) => {
@@ -20,7 +21,8 @@ class CreateNotification extends Component {
     service
       .handleUpload(uploadData)
       .then((response) => {
-        this.setState({ imageUrl: response.secure_url });
+        let creator = this.props.user;
+        this.setState({ imageUrl: response.secure_url, creator });
       })
       .catch((err) => console.log('Error while uploading the file: ', err));
   };

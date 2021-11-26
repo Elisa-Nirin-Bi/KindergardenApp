@@ -46,20 +46,17 @@ class Child extends Component {
       <div>
         <h2>Child List</h2>
         {this.state.childs.map((child) => {
-      
-            {(this.state.user &&
+          {
+            this.state.user &&
               ((this.state.user.name === this.state.child.parentName && (
                 <>
-                 <p>{child.name}</p>
+                  <p>{child.name}</p>
                 </>
-              )) || (
-               
-                <>
-              </>
-            ))}})}
-
-    </div>
-            )
+              )) || <></>);
+          }
+        })}
+      </div>
+    );
   }
 }
 

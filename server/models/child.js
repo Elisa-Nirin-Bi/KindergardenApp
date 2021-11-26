@@ -19,6 +19,10 @@ const schema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  genre: {
+    type: String,
+    enum: ['boy', 'girl']
+  },
   parent: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

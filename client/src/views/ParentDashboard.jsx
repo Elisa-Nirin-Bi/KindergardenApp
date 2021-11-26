@@ -16,7 +16,7 @@ const ParentDashboard = (props) => {
 
   return (
     <div>
-      <span>Welcome parent {props.user.name},</span>
+      <span>Welcome parent {props.user.name},&nbsp;&nbsp; </span>
       <Link to="/">
         <HomeIcon />
       </Link>

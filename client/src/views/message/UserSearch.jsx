@@ -35,8 +35,8 @@ export class UserSearch extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h2>Find User</h2>
+        <div className="userSearch">
+          <h2>Find Teachers & Friends</h2>
           <input
             type="text"
             onChange={(event) => {

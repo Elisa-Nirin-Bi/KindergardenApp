@@ -57,7 +57,7 @@ class ChildList extends Component {
 
     return (
       <div>
-        <h2>Child List</h2>
+        <h2>Our Children</h2>
         <input
           type="text"
           placeholder="Search ..."

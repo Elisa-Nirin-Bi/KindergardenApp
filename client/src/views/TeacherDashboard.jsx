@@ -15,7 +15,7 @@ const TeacherDashboard = (props) => {
       <nav>
         {(props.user && (
           <>
-            <span>Welcome teacher {props.user.name}, </span>
+            <span>Welcome teacher {props.user.name}, &nbsp;&nbsp; </span>
             <Link to="/">
               <HomeIcon />
             </Link>

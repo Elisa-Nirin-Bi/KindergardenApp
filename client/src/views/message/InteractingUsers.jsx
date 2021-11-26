@@ -8,7 +8,7 @@ export class InteractingUsers extends Component {
     super(props);
     this.state = {
       conversations: [],
-      count: ''
+      count: 0
     };
   }
   componentDidMount() {
@@ -38,14 +38,16 @@ export class InteractingUsers extends Component {
   render() {
     return (
       <div className="interactingUsers">
+        <p>
+          <strong>Active Conversations {this.state.count}</strong>
+        </p>
         <ul>
           {this.state.conversations.map((user) => (
             <li className="interactingUsers-li" key={user._id}>
               <Link to={`/message/user/${user._id}`}>
-                {user.name}
+                <strong>{user.name}</strong>
                 <SpeechBubble size={40} mood="happy" color="#fffaf0" />
               </Link>
-              {this.state.count}
             </li>
           ))}
         </ul>
