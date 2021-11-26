@@ -5,6 +5,7 @@ import {
   CardElement
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -56,7 +57,9 @@ class NonInjectedPaymentForm extends Component {
     return (
       <form onSubmit={this.handleFormSubmission}>
         <CardElement options={CARD_ELEMENT_OPTIONS} />
-        <button>Confirm Subscription</button>
+        <button>
+          <ThumbUpAltIcon />
+        </button>
       </form>
     );
   }

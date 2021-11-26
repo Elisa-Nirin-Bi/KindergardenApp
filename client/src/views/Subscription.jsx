@@ -5,6 +5,7 @@ import {
   loadSubscription
 } from '../services/subscription';
 import PaymentForm from './../components/PaymentForm';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 class SubscriptionView extends Component {
   constructor() {
@@ -52,25 +53,31 @@ class SubscriptionView extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Subscription View</h1>
+      <div className="subscription-div">
         {(this.state.subscription && (
-          <div>
+          <div className="subscription-statusOne">
+            <h2>You are an active member!</h2>
             <p>
-              You have an active subscription. Your next billing date is{' '}
+              You have an active subscription.
+              <br></br>
+              Your next billing date is{' '}
               {new Date(
                 this.state.subscription.nextBillingDate
               ).toLocaleDateString()}
             </p>
             <form onSubmit={this.handleSubscriptionCancelation}>
-              <button>Cancel Subscription</button>
+              <button>
+                <DeleteIcon />
+              </button>
             </form>
           </div>
         )) || (
-          <div>
+          <div className="subscription-statusTwo">
+            <h2>Please subscribe here!</h2>
             <p>
-              You are not yet subscribed. Please, fill out your credit card
-              details and click "Subscribe".
+              You are not yet subscribed.
+              <br></br>
+              Please, fill out your credit card details and click "Subscribe".
             </p>
             <PaymentForm
               onConfirmPaymentMethod={this.handleSubscriptionCreation}

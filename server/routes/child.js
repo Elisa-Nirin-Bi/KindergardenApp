@@ -12,12 +12,11 @@ const fileUploader = require('./../middleware/file-upload');
 
 router.post('/create', routeGuard, (req, res, next) => {
   console.log('we got the route of the createChild');
-  const { name, address, emergencyContactNumber, genre, parent } = req.body;
+  const { name, address, emergencyContactNumber, parent } = req.body;
   Child.create({
     name,
     address,
     emergencyContactNumber,
-    genre,
     parent
   })
     .then((kid) => {
@@ -93,6 +92,7 @@ router.get('/:id/allnotification', (req, res, next) => {
   console.log('testallnotifications');
   console.log(req.params);
   Notification.find({ childProfile: req.params.id })
+    .populate('creator')
     .then((notification) => res.status(200).json(notification))
     .catch((err) => next(err));
 });
@@ -115,8 +115,8 @@ router.post(
 router.post('/:id/create-notification', (req, res, next) => {
   const childProfile = req.params.id;
   const { message, imageUrl, creator } = req.body;
+
   Notification.create({ message, imageUrl, childProfile, creator })
-    .populate('creator')
     .then((newNotification) => {
       res.status(200).json(newNotification);
     })

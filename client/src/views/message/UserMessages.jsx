@@ -89,7 +89,7 @@ export class UserMessages extends Component {
                   <li
                     style={{
                       paddingTop: '50',
-                      backgroundColor: '#E3F2A9'
+                      backgroundColor: '#bfdc50'
                     }}
                     key={message.id}
                   >

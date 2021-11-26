@@ -60,8 +60,10 @@ a {
   box-shadow: 0 0 2em #aee5ef;
   margin: 0px auto auto auto;
   width: 300px;
-  border-radius: 20px;
-  background-color: #bfdc50;
+  //border-radius: 20px;
+  //background-color: #bfdc50;
+  background-color: #e3f2a9;
+  margin-top: 100px;
 }
 
 form {
@@ -92,7 +94,7 @@ h2 {
   width: 300px;
   //   background-color: #aee5ef;
   margin: auto auto auto auto;
-  background-color: #bfdc50;
+  background-color: #e3f2a9;
   box-shadow: 0 0 2em #b3c083;
 }
 
@@ -149,7 +151,7 @@ h2 {
 }
 
 .interactingUsers-li {
-  background-color: #bfdc50;
+  background-color: #e3f2a9;
   padding-top: 10px;
   width: 300px;
   margin: 20px auto auto auto;
@@ -180,7 +182,7 @@ h2 {
 .mainProfile {
   margin: auto;
   width: 350px;
-  background-color: #bfdc50;
+  background-color: #e3f2a9;
 }
 
 .mainProfile {
@@ -224,4 +226,38 @@ h2 {
 
 .interactingUsers > p {
   font-size: 1.2em;
+}
+.subscription-statusOne {
+  padding-top: 20px;
+  background-color: #e3f2a9;
+  width: 500px;
+  height: 200px;
+  margin: auto;
+}
+.subscription-div {
+  margin-top: 120px;
+}
+
+.subscription-statusTwo {
+  padding-top: 20px;
+  background-color: #e3f2a9;
+  width: 500px;
+  height: 250px;
+  margin: auto;
+}
+.childParents {
+  height: 170px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  //   background-color: #aee5ef;
+  margin: auto auto auto auto;
+  background-color: #e3f2a9;
+  box-shadow: 0 0 2em #b3c083;
+}
+.childListNames {
+  align-items: center;
 }

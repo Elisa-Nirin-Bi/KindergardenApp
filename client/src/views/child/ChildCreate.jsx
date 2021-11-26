@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createChild } from '../../services/childapi';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 class ChildCreate extends Component {
   constructor(props) {
@@ -55,8 +56,8 @@ class ChildCreate extends Component {
   render() {
     return (
       <div>
-        <h2>Child Here we know</h2>
         <div className="teacherSignUp-div">
+          <h2>Add Your Child</h2>
           <form onSubmit={this.handleFormSubmission}>
             <label htmlFor="input-name">Name</label>
             <input
@@ -97,7 +98,9 @@ class ChildCreate extends Component {
               onChange={this.handleInputChange}
             />
 
-            <button>Create Child Profile</button>
+            <button>
+              <ThumbUpAltIcon />
+            </button>
           </form>
         </div>
       </div>

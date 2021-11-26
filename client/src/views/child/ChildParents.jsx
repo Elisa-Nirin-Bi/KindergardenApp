@@ -56,7 +56,7 @@ class ChildParents extends Component {
     console.log(this.state.parent);
     return (
       <div>
-        <h2>Child List of the Parent</h2>
+        <h2>Your children</h2>
         {this.state.childs
           .filter((val) => {
             console.log('valInside');

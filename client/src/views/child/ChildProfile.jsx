@@ -123,6 +123,7 @@ class ChildProfile extends Component {
                     }
                   })
                   .map((data) => {
+                    console.log(data);
                     return (
                       <div key={Math.random()}>
                         <p>
@@ -140,9 +141,24 @@ class ChildProfile extends Component {
                             />
                           ) : null}
                         </p>
+
                         <Moment format="YYYY-MM-DD HH:mm">
                           {data.creationDate}
                         </Moment>
+                        {(this.props.user.role === 'parent' && (
+                          <>
+                            <strong>By teacher {data.creator.name}</strong>
+                            <Link to={`/message/user/${data.creator._id}`}>
+                              <ChatBubbleIcon />
+                            </Link>
+                          </>
+                        )) || (
+                          <>
+                            <strong>
+                              &nbsp;&nbsp;By teacher {data.creator.name}
+                            </strong>
+                          </>
+                        )}
                       </div>
                     );
                   })

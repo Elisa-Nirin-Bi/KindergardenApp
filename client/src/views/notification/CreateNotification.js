@@ -11,7 +11,10 @@ class CreateNotification extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    console.log(this.props.user);
+
+    this.setState({ [name]: value, creator: this.props.user });
+    console.log(this.state);
   };
 
   handleFileUpload = (e) => {
@@ -19,10 +22,10 @@ class CreateNotification extends Component {
     uploadData.append('imageUrl', e.target.files[0]);
 
     service
-      .handleUpload(uploadData)
+      .handleUpload(uploadData, this.props.match.params.id)
+
       .then((response) => {
-        let creator = this.props.user;
-        this.setState({ imageUrl: response.secure_url, creator });
+        this.setState({ imageUrl: response.secure_url });
       })
       .catch((err) => console.log('Error while uploading the file: ', err));
   };
