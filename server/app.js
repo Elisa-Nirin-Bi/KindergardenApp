@@ -21,7 +21,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://dazzling-feynman-502e11.netlify.app/',
+    origin: 'https://dazzling-feynman-502e11.netlify.app',
     // origin: ['http://localhost:3501', process.env.CLIENT_APP_ORIGIN],
     credentials: true
   })
