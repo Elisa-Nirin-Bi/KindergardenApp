@@ -30,9 +30,10 @@ class ChildProfile extends Component {
   }
 
   componentDidMount() {
+    console.log('this.propsCOMPONTETDIDMOUNT');
+    console.log(this.props);
     getChild(this.props.match.params.id)
       .then((childinfo) => {
-        console.log(this.props.user._id);
         const childToShow = childinfo.child;
 
         this.setState({
@@ -62,12 +63,15 @@ class ChildProfile extends Component {
   }
 
   render() {
+    console.log('this.state.CHILDPROFILE');
+    console.log(this.state);
+    console.log('this.props');
+    console.log(this.props);
     return this.state.id ? (
       <div>
         <div className="mainProfile">
           <h2>{this.state.name}</h2>
-
-          {(this.props.user.role === 'teacher' && (
+          {(this.props.user && this.props.user.role === 'teacher' && (
             <>
               <a href={`/child/${this.state.id}/upload`}>
                 <ArchiveIcon />
