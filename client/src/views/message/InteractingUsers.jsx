@@ -41,7 +41,7 @@ export class InteractingUsers extends Component {
         <p>
           <strong>Active Conversations {this.state.count}</strong>
         </p>
-        <ul>
+        <ul className="listInteractingUsers">
           {this.state.conversations.map((user) => (
             <li className="interactingUsers-li" key={user._id}>
               <Link to={`/message/user/${user._id}`}>
