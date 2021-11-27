@@ -22,26 +22,20 @@ class TeacherUpdate extends Component {
     event.preventDefault();
     const { name, email, password } = this.state;
     const idUser = this.props.match.params.id;
-    console.log('idUser');
-    console.log(idUser);
+
     updateTeacher({ name, email, password, idUser })
       .then((user) => {
         this.props.onAuthenticationChange(user);
         this.props.history.push('/');
       })
       .catch((error) => {
-        console.log(error);
         alert('There was an error editing');
       });
   };
 
   render() {
-    console.log(' I reached here');
-    console.log('this.props');
-    console.log(this.props);
     let user;
-    console.log('user');
-    console.log(user);
+
     return (
       <div className="teacherSignUp-div">
         <h2>Edit Teacher Profile</h2>

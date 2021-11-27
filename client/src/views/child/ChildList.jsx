@@ -56,7 +56,7 @@ class ChildList extends Component {
     console.log(this.props);
 
     return (
-      <div>
+      <div className="ourChildren">
         <h2>Our Children</h2>
         <input
           type="text"

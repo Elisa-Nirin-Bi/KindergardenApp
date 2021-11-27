@@ -48,12 +48,6 @@ class ChildParents extends Component {
   }
 
   render() {
-    console.log('this.props');
-    console.log(this.props);
-    console.log('this.state');
-    console.log(this.state);
-    console.log('this.state.parent');
-    console.log(this.state.parent);
     return (
       <div>
         <h2>Your children</h2>
@@ -74,7 +68,6 @@ class ChildParents extends Component {
                 <div className="childButtons">
                   <button style={{ width: '40px' }}>
                     <a href={'/child/' + child._id}>
-                      {' '}
                       <PreviewIcon />
                     </a>
                   </button>

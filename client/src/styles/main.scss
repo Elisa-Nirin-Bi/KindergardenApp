@@ -254,10 +254,13 @@ h2 {
   align-items: center;
 
   //   background-color: #aee5ef;
-  margin: auto auto auto auto;
+  margin: 50px auto auto auto;
   background-color: #e3f2a9;
   box-shadow: 0 0 2em #b3c083;
 }
 .childListNames {
   align-items: center;
+}
+.ourChildren > h1 {
+  margin-top: 150px;
 }

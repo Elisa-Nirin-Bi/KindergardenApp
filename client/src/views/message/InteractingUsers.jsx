@@ -36,6 +36,7 @@ export class InteractingUsers extends Component {
   }
 
   render() {
+    console.log(this.state.conversations);
     return (
       <div className="interactingUsers">
         <p>

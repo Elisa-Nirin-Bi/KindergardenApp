@@ -78,13 +78,7 @@ class ChildProfile extends Component {
                 <ChatBubbleIcon />
               </Link>
             </>
-          )) || (
-            <>
-              <Link to={`/message/user/${this.state.parentId}`}>
-                <ChatBubbleIcon />
-              </Link>
-            </>
-          )}
+          )) || <></>}
           <div className="profile">
             {(this.state.genre === 'girl' && (
               <>

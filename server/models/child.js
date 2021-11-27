@@ -21,6 +21,7 @@ const schema = new mongoose.Schema({
   },
   genre: {
     type: String,
+    required: true,
     enum: ['boy', 'girl']
   },
   parent: {

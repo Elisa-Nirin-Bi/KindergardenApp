@@ -34,7 +34,6 @@ export class UserMessages extends Component {
     const thisMsgId = msgId;
     removeMessageById(thisMsgId)
       .then(() => {
-        console.log(msgId);
         window.location.reload(false);
       })
       .catch((err) => {
@@ -43,8 +42,6 @@ export class UserMessages extends Component {
   };
 
   render() {
-    console.log('this.propsINSIDEMESSAGES');
-    console.log(this.props);
     return (
       <div>
         <div className="userMessages">
