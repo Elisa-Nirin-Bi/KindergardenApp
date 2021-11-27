@@ -15,33 +15,33 @@ const ParentDashboard = (props) => {
   console.log(props.user._id);
 
   return (
-    <div>
-      <span>Welcome parent {props.user.name},&nbsp;&nbsp; </span>
-      <Link to="/">
-        <HomeIcon />
-      </Link>
-
-      <a href={'/subscription'}>
-        <CardMembershipIcon />
-      </a>
-
-      <a href={'/parent/' + props.user._id + '/edit'}>
-        {' '}
-        <EditIcon />
-      </a>
-
-      <a href={'/child/create'}>
-        <ChildCareIcon />
-      </a>
-
-      {/* <a href={'/message/list/' + props.user._id}>Messages</a> */}
-      <a href="/message/list">
-        {' '}
-        <ChatBubbleIcon />{' '}
-      </a>
-      <button onClick={props.onClick}>
-        <LogoutIcon />
-      </button>
+    <div className="menuParents">
+      <span className="parentWelcome">
+        Welcome parent {props.user.name},&nbsp;&nbsp;{' '}
+      </span>
+      <div className="divOfButtons">
+        <Link to="/">
+          <HomeIcon />
+        </Link>
+        <a href={'/subscription'}>
+          <CardMembershipIcon />
+        </a>
+        <a href={'/parent/' + props.user._id + '/edit'}>
+          {' '}
+          <EditIcon />
+        </a>
+        <a href={'/child/create'}>
+          <ChildCareIcon />
+        </a>
+        {/* <a href={'/message/list/' + props.user._id}>Messages</a> */}
+        <a href="/message/list">
+          {' '}
+          <ChatBubbleIcon />{' '}
+        </a>
+        <button className="logOutButton" onClick={props.onClick}>
+          <LogoutIcon />
+        </button>
+      </div>
     </div>
   );
 };
