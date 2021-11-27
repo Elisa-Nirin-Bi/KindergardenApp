@@ -22,7 +22,7 @@ const schema = new mongoose.Schema({
   genre: {
     type: String,
     required: true,
-    enum: ['boy', 'girl']
+    enum: ['boy', 'girl', 'Girl', 'Boy']
   },
   parent: {
     type: mongoose.Schema.Types.ObjectId,
