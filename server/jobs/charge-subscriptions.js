@@ -8,7 +8,7 @@ const stripeApi = require('./../utils/stripe-api');
 const MONGODB_URI = process.env.MONGODB_URI;
 
 const SUBSCRIPTION_DURATION = 1000 * 60 * 60 * 24 * (365.25 / 12);
-const SUBSCRIPTION_PRICE_AMOUNT = 799;
+const SUBSCRIPTION_PRICE_AMOUNT = 10000;
 
 const chargeSubscriptions = async () => {
   const subscriptions = await Subscription.find({
