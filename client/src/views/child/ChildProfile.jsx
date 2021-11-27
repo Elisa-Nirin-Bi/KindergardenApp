@@ -35,16 +35,14 @@ class ChildProfile extends Component {
         console.log(this.props.user._id);
         const childToShow = childinfo.child;
 
-        this.setState(() => {
-          return {
-            id: childToShow._id,
-            name: childToShow.name,
-            genre: childToShow.genre,
-            address: childToShow.address,
-            emergencyContactNumber: childToShow.emergencyContactNumber,
-            parent: childToShow.parent.name,
-            parentId: childToShow.parent._id
-          };
+        this.setState({
+          id: childToShow._id,
+          name: childToShow.name,
+          genre: childToShow.genre,
+          address: childToShow.address,
+          emergencyContactNumber: childToShow.emergencyContactNumber,
+          parent: childToShow.parent.name,
+          parentId: childToShow.parent._id
         });
 
         service
