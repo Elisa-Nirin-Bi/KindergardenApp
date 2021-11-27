@@ -66,7 +66,7 @@ class SubscriptionView extends Component {
               ).toLocaleDateString()}
             </p>
             <form onSubmit={this.handleSubscriptionCancelation}>
-              <button>
+              <button style={{ margin: 'auto' }} className="logOutButton">
                 <DeleteIcon />
               </button>
             </form>

@@ -57,7 +57,7 @@ class NonInjectedPaymentForm extends Component {
     return (
       <form onSubmit={this.handleFormSubmission}>
         <CardElement options={CARD_ELEMENT_OPTIONS} />
-        <button>
+        <button style={{ margin: 'auto' }} className="logOutButton">
           <ThumbUpAltIcon />
         </button>
       </form>

@@ -98,7 +98,7 @@ class ChildCreate extends Component {
               onChange={this.handleInputChange}
             />
 
-            <button>
+            <button style={{ margin: 'auto' }} className="logOutButton">
               <ThumbUpAltIcon />
             </button>
           </form>

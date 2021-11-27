@@ -36,21 +36,29 @@ export class InteractingUsers extends Component {
   }
 
   render() {
-    console.log(this.state.conversations);
+    console.log(this.state.conversations._id);
+
     return (
       <div className="interactingUsers">
         <p>
           <strong>Active Conversations {this.state.count}</strong>
         </p>
         <ul className="listInteractingUsers">
-          {this.state.conversations.map((user) => (
-            <li className="interactingUsers-li" key={user._id}>
-              <Link to={`/message/user/${user._id}`}>
-                <strong>{user.name}</strong>
-                <SpeechBubble size={40} mood="happy" color="#fffaf0" />
-              </Link>
-            </li>
-          ))}
+          {this.state.conversations.map((user) => {
+            console.log(user._id);
+            if (this.state.conversations._id === user._id) {
+              return (
+                <li className="interactingUsers-li" key={user._id}>
+                  <Link to={`/message/user/${user._id}`}>
+                    <strong>{user.name}</strong>
+                    <SpeechBubble size={40} mood="happy" color="#fffaf0" />
+                  </Link>
+                </li>
+              );
+            } else {
+              return <></>;
+            }
+          })}
         </ul>
       </div>
     );
