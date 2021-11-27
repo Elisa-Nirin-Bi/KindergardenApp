@@ -235,6 +235,11 @@ h2 {
   width: 500px;
   margin: auto;
   box-shadow: 0 0 2em #b0d5cf;
+  @media (max-width: $breakpoint-mobile) {
+    width: 95%;
+    height: auto;
+    padding: 0em;
+  }
 }
 .imgProfile > img {
   width: 120px;
@@ -307,6 +312,10 @@ h2 {
   width: 500px;
   height: 250px;
   margin: auto;
+  @media (max-width: $breakpoint-mobile) {
+    width: 95%;
+    height: auto;
+  }
 }
 .childParents {
   display: flex;
