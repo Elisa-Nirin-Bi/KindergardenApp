@@ -21,7 +21,7 @@ class SubscriptionView extends Component {
         this.setState({ subscription });
       })
       .catch((error) => {
-        alert('There was an error loading the subscription.');
+        alert('There was an error loading the payment.');
         console.log(error);
       });
   }
@@ -33,7 +33,7 @@ class SubscriptionView extends Component {
         this.props.onUserRefresh();
       })
       .catch((error) => {
-        alert('There was an error creating the subscription.');
+        alert('There was an error paying the fee.');
         console.log(error);
       });
   };
@@ -56,9 +56,9 @@ class SubscriptionView extends Component {
       <div className="subscription-div">
         {(this.state.subscription && (
           <div className="subscription-statusOne">
-            <h2>You are an active member!</h2>
+            <h2>You child school fee is paid!</h2>
             <p>
-              You have an active subscription.
+              Your fee is paid for this month.
               <br></br>
               Your next billing date is{' '}
               {new Date(
@@ -73,11 +73,11 @@ class SubscriptionView extends Component {
           </div>
         )) || (
           <div className="subscription-statusTwo">
-            <h2>Please subscribe here!</h2>
+            <h2>Please pay your monthly school fee €100</h2>
             <p>
-              You are not yet subscribed.
+              You child school fee is not paid yet.
               <br></br>
-              Please, fill out your credit card details and click "Subscribe".
+              Please, fill out your credit card details and click "Pay".
             </p>
             <PaymentForm
               onConfirmPaymentMethod={this.handleSubscriptionCreation}
