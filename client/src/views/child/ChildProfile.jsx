@@ -80,19 +80,20 @@ class ChildProfile extends Component {
             </>
           )) || <></>}
           <div className="profile">
-            {(this.state.genre === 'girl' && this.state.genre === 'Girl' && (
-              <>
-                <div className="imgProfile">
-                  <img src={Profile} alt="child" />
-                </div>
-              </>
-            )) || (
-              <>
-                <div className="imgProfile">
-                  <img src={BoyProfile} alt="child" />
-                </div>
-              </>
-            )}
+            {this.state.genre === 'girl' ||
+              this.state.genre === 'Girl' && (
+                <>
+                  <div className="imgProfile">
+                    <img src={Profile} alt="child" />
+                  </div>
+                </>
+              )) || (
+                <>
+                  <div className="imgProfile">
+                    <img src={BoyProfile} alt="child" />
+                  </div>
+                </>
+              )}
 
             <div className="detailsProfile">
               <h5>
