@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import service from '../../services/notificationapi';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 class CreateNotification extends Component {
   state = {
@@ -46,10 +47,12 @@ class CreateNotification extends Component {
 
   render() {
     return (
-      <div>
+      <div className="notification-div">
         <h2>New Notification</h2>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-          <label>Message</label>
+          <label>
+            <strong>Message</strong>
+          </label>
           <textarea
             type="text"
             name="message"
@@ -57,7 +60,13 @@ class CreateNotification extends Component {
             onChange={this.handleChange}
           />
           <input type="file" onChange={this.handleFileUpload} />
-          <button type="submit">Upload</button>
+          <button
+            style={{ margin: 'auto' }}
+            className="logOutButton"
+            type="submit"
+          >
+            <FileUploadIcon />
+          </button>
         </form>
       </div>
     );

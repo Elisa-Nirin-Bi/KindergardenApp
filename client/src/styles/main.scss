@@ -97,6 +97,16 @@ a {
   }
 }
 
+.notification-div {
+  margin-top: 50px;
+  height: 250px;
+  width: 300px;
+  background-color: #e3f2a9;
+  box-shadow: 0 0 2em #aee5ef;
+  margin: auto;
+  padding-top: 20px;
+}
+
 form {
   display: flex;
   flex-direction: column;
