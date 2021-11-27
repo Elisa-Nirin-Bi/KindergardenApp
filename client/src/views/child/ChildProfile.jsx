@@ -167,7 +167,7 @@ class ChildProfile extends Component {
         </div>
       </div>
     ) : (
-      <div>No profile found</div>
+      <div></div>
     );
   }
 }
